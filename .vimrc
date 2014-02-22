@@ -206,6 +206,10 @@ let g:SuperTabMappingBackward = '<s-c-space>'
 
 imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 
+"============== NERDTree ================
+"
+let NERDTreeQuitOnOpen = 1
+
 "============== Swap Files ==============
 
 set noswapfile 		" suppress creation of swap files

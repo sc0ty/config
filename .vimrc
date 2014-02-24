@@ -21,7 +21,7 @@ set showmode
 nnoremap <F3> :tabp<CR>
 nnoremap <F4> :tabn<CR>
 nnoremap <F6> :tabe<CR>
-nnoremap <F5> :NERDTree<CR>
+nnoremap <F5> :NERDTreeToggle<CR>
 map <F7> :buffers<CR>:buffer<SPACE>
 map <F8> :!/bin/bash<CR><CR>
 map <F9> :make!<CR>
@@ -207,8 +207,13 @@ let g:SuperTabMappingBackward = '<s-c-space>'
 imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 
 "============== NERDTree ================
-"
+
 let NERDTreeQuitOnOpen = 1
+
+" lynx-like motion
+let NERDTreeMapOpen			= '<Right>'
+let NERDTreeMapActivateNode	= '<Right>'
+let NERDTreeMapUpdir		= '<Left>'
 
 "============== Swap Files ==============
 

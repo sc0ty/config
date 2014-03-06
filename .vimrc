@@ -211,8 +211,9 @@ imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 let NERDTreeQuitOnOpen = 1
 
 " lynx-like motion
-let NERDTreeMapOpen			= '<Right>'
+let NERDTreeMapPreview		= '<Right>'
 let NERDTreeMapActivateNode	= '<Right>'
+let NERDTreeMapCloseDir		= '<Left>'
 let NERDTreeMapUpdir		= '<Left>'
 
 "============== Swap Files ==============

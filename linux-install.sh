@@ -1,17 +1,23 @@
 #!/bin/sh
 
 inst () {
-	if [ ! -e "${HOME}/$1" ]
+	if [ ! -e "${HOME}/backup/$1" ]
 	then
 		mv -n "${HOME}/$1" "${HOME}/backup/$1"
 	fi
-	ln -sf $2 "${PWD}/$1" "${HOME}/$1" 
+	
+	if [ -d "${PWD}/$1" ]
+	then
+		ln -sf "${PWD}/$1" "${HOME}/" 
+	else
+		ln -sf "${PWD}/$1" "${HOME}/$1" 
+	fi
 }
 
 mkdir -p "${HOME}/backup"
 
 inst .vim
-inst .vimrc -d
+inst .vimrc
 inst .bashrc
 inst .tmux.conf
 

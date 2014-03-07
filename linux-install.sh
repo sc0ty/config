@@ -20,4 +20,6 @@ inst .vim
 inst .vimrc
 inst .bashrc
 inst .tmux.conf
+inst .Xresources
+xrdb -merge ~/.Xresources
 

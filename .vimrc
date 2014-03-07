@@ -7,6 +7,11 @@
 " Enable mouse usage (all modes) in terminals
 set mouse=ni
 set mousemodel=popup
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 
 "============= Key Mappings ============= 
 
@@ -153,15 +158,16 @@ set backspace=indent,eol,start 	" backspace over everything in insert mode
 set ls=2 			" Always show status line
 set laststatus=2
 
-" status line background color
-"highlight clear
-"highlight StatusLine ctermfg=7
-
-" change the status line color based on mode
-"if version >= 700
-"  au InsertEnter * highlight StatusLine ctermfg=1 ctermbg=7
-"  au InsertLeave * highlight StatusLine ctermfg=7 ctermbg=0
-"endif
+set statusline=								 " clear the statusline for when vimrc is reloaded
+set statusline+=[%n]\                        " buffer number
+set statusline+=%f\                          " file name
+set statusline+=%#error#%h%m%r%w%*           " flags
+set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
+set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
+set statusline+=%{&fileformat}]              " file format
+set statusline+=%=                           " right align
+"set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
+set statusline+=%-14.(%l/%L,%c%)\ %<%P        " offset
 
 "============== Folding ==============
 
@@ -250,8 +256,14 @@ let g:tex_flavor='latex'
 
 colorscheme default
 highlight clear
-highlight Comment		ctermfg=lightblue
+set background=dark
+"highlight Comment		ctermfg=lightblue
 highlight ModeMsg		ctermbg=blue
+highlight TabLine		ctermfg=black ctermbg=white
+highlight TabLineSel	ctermfg=white ctermbg=blue
+
+highlight StatusLine	ctermfg=white ctermbg=black
+highlight StatusLineNC	ctermfg=gray  ctermbg=black
 
 " OmniComplete menu
 highlight Pmenu         ctermfg=white ctermbg=blue		" menu element

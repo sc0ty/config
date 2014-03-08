@@ -1,6 +1,7 @@
 ! Use a nice truetype font and size by default... 
 xterm*faceName: DejaVu Sans Mono Book
 xterm*faceSize: 9
+xterm*utf8: 1
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
 xterm*loginshell: true
@@ -37,5 +38,7 @@ xterm*ScrollBar: true
 
 ! stop output to terminal from jumping down to bottom of scroll again
 xterm*scrollTtyOutput: false
+xterm*scrollKey: true
+xterm*multiScroll: true
 
 xterm*allowWindowOps: true

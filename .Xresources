@@ -1,6 +1,12 @@
 ! Use a nice truetype font and size by default... 
 xterm*faceName: DejaVu Sans Mono Book
 xterm*faceSize: 9
+xterm*faceSize1: 6
+xterm*faceSize2: 7
+xterm*faceSize3: 8
+xterm*faceSize4: 10
+xterm*faceSize5: 12
+xterm*faceSize6: 16
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
 xterm*loginshell: true
@@ -8,10 +14,9 @@ xterm*loginshell: true
 ! I like a LOT of scrollback...
 xterm*savelines: 1000000
 
-! double-click to select whole URLs :D
-!xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
-
 ! colors
+*customization: -color
+xterm*termName: xterm-256color
 xterm*foreground: rgb:FF/FF/FF
 xterm*background: rgb:00/00/00
 xterm*color0: rgb:00/00/00
@@ -35,7 +40,18 @@ xterm*color15: rgb:EE/EE/EC
 xterm*rightScrollBar: true
 xterm*ScrollBar: true
 
-! stop output to terminal from jumping down to bottom of scroll again
+! prevent output from jumping down to bottom of scroll again, scroll with any key
 xterm*scrollTtyOutput: false
+xterm*scrollKey: true
+!xterm*multiScroll: true
 
+! pretty icon
+xterm*activeIcon: true
+
+! scroll with mouse in alternate mode
+xterm*alternateScroll: true
+
+! needed for xterm
 xterm*allowWindowOps: true
+xterm*allowTitleOps: true
+xterm*allowFontOps: true

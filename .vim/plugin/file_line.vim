@@ -1,5 +1,5 @@
 " Avoid installing twice or when in unsupported Vim version.
-if exists('g:loaded_file_line') || (v:version < 700)
+if exists('g:loaded_file_line') || (v:version < 701)
 	finish
 endif
 let g:loaded_file_line = 1
@@ -28,17 +28,17 @@ function! s:gotoline()
 
 	if filereadable(file_name)
 		let l:bufn = bufnr("%")
-		exec ":bwipeout " l:bufn
 
-		exec "keepalt edit " . file_name
+		exec "keepalt edit " . fnameescape(file_name)
 		exec ":" . line_num
 		exec "normal! " . col_num . '|'
 		if foldlevel(line_num) > 0
 			exec "normal! zv"
 		endif
-
-
 		exec "normal! zz"
+
+		exec ":bwipeout " l:bufn
+		exec ":filetype detect"
 	endif
 
 endfunction

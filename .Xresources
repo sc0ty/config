@@ -1,16 +1,12 @@
 ! Use a nice truetype font and size by default... 
 xterm*faceName: DejaVu Sans Mono Book
 xterm*faceSize: 9
-<<<<<<< HEAD
 xterm*faceSize1: 6
 xterm*faceSize2: 7
 xterm*faceSize3: 8
 xterm*faceSize4: 10
 xterm*faceSize5: 12
 xterm*faceSize6: 16
-=======
-xterm*utf8: 1
->>>>>>> a11811a944e85c428e1c5462d1c75f97c6a15f93
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
 xterm*loginshell: true
@@ -47,7 +43,6 @@ xterm*ScrollBar: true
 ! prevent output from jumping down to bottom of scroll again, scroll with any key
 xterm*scrollTtyOutput: false
 xterm*scrollKey: true
-<<<<<<< HEAD
 !xterm*multiScroll: true
 
 ! pretty icon
@@ -55,11 +50,10 @@ xterm*activeIcon: true
 
 ! scroll with mouse in alternate mode
 xterm*alternateScroll: true
-=======
 xterm*multiScroll: true
->>>>>>> a11811a944e85c428e1c5462d1c75f97c6a15f93
 
 ! needed for xterm
 xterm*allowWindowOps: true
 xterm*allowTitleOps: true
 xterm*allowFontOps: true
+

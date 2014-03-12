@@ -166,3 +166,5 @@ if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
 fi
 
+export WWW_HOME='http://google.pl'
+

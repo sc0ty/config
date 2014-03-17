@@ -146,6 +146,8 @@ fi
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias q="exit"
 alias loop="while [ 1 ] ; do "
+alias xterm1="xtermcontrol --bg=#000000"
+alias xterm2="xtermcontrol --bg=#002b36"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

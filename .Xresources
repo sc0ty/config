@@ -15,10 +15,11 @@ xterm*loginshell: true
 xterm*saveLines: 1000000
 
 ! colors
-*customization: -color
 xterm*termName: xterm-256color
-xterm*foreground: rgb:FF/FF/FF
+xterm*foreground: rgb:FD/F6/E3
 xterm*background: rgb:00/00/00
+light*background: rgb:00/2B/36
+xterm*cursorColor: rgb:93/A1/A1
 xterm*color0: rgb:00/00/00
 xterm*color1: rgb:CC/00/00
 xterm*color2: rgb:4E/9A/06
@@ -34,7 +35,7 @@ xterm*color11: rgb:FC/E9/4F
 xterm*color12: rgb:72/9F/CF
 xterm*color13: rgb:AD/7F/A8
 xterm*color14: rgb:34/E2/E2
-xterm*color15: rgb:EE/EE/EC
+xterm*color15: rgb:EE/EE/EE
 
 ! right hand side scrollbar...
 xterm*rightScrollBar: true
@@ -58,4 +59,3 @@ xterm*metaSendsEscape: true
 xterm*allowWindowOps: true
 xterm*allowTitleOps: true
 xterm*allowFontOps: true
-

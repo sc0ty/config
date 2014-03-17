@@ -12,7 +12,7 @@ xterm*faceSize6: 16
 xterm*loginshell: true
 
 ! I like a LOT of scrollback...
-xterm*savelines: 1000000
+xterm*saveLines: 1000000
 
 ! colors
 *customization: -color
@@ -43,7 +43,6 @@ xterm*ScrollBar: true
 ! prevent output from jumping down to bottom of scroll again, scroll with any key
 xterm*scrollTtyOutput: false
 xterm*scrollKey: true
-!xterm*multiScroll: true
 
 ! pretty icon
 xterm*activeIcon: true

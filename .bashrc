@@ -32,7 +32,7 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # track names of programs running shell
-if ps $PPID | grep mc; then
+if ps $PPID | grep -w "mc"; then
 	TITLE="${TITLE}[mc]"
 elif [ -n "$VIM" ]; then
 	TITLE="${TITLE}[vim]"

@@ -215,6 +215,7 @@ imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 "============== NERDTree ================
 
 let NERDTreeQuitOnOpen = 1
+let NERDTreeDirArrows = 0
 
 " lynx-like motion
 let NERDTreeMapPreview		= '<Right>'

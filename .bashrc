@@ -32,12 +32,15 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # track names of programs running shell
-if ps $PPID | grep mc; then
+PNAME=$(ps -p $PPID -o comm=)
+if [ "$PNAME" == "mc" ] ; then
 	TITLE="${TITLE}[mc]"
-elif [ -n "$VIM" ]; then
+elif [ "$PNAME" == "vim" ] || [ -n "$VIM" ] ; then
 	TITLE="${TITLE}[vim]"
-elif [ -n "$STY" ]; then
-	TITLE="${TITLE}[scr]"
+elif [ "$PNAME" == "tmux" ] ; then
+	TITLE=""
+elif [ "$PNAME" == "screen" ] || [ -n "$STY" ] ; then
+	TITLE=""
 fi
 
 export TITLE
@@ -148,6 +151,9 @@ alias q="exit"
 alias loop="while [ 1 ] ; do "
 alias xterm1="xtermcontrol --bg=#000000"
 alias xterm2="xtermcontrol --bg=#002b36"
+alias p2c="xsel -po | xsel -b"
+alias c2p="xsel -bo | xsel -p"
+alias mc="mc -x"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

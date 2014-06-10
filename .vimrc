@@ -28,7 +28,7 @@ nnoremap <F4> :tabn<CR>
 nnoremap <F6> :tabe<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 map <F7> :buffers<CR>:buffer<SPACE>
-map <F8> :!/bin/bash<CR><CR>
+map <F8> :shell<CR><CR>
 map <F9> :make!<CR>
 
 " build tags with Ctrl-F12
@@ -58,32 +58,12 @@ set hidden
 " Automatically save before commands like :next and :make
 set autowrite
 
-" buffer browsing
-"nnoremap <Left> :bprev<CR>
-"nnoremap <Right> :bnext<CR>
-" show buffer list
-" jump to previous buffer
-"nnoremap <Down> <C-^>
-
-" Alt Tab to cycle through buffers
-"nnoremap <Tab> :bnext<CR>
-
 "============ Saving and Closing ============
 
 " changing file types:
 command! DOS set ff=dos 	" force windows style line endings
 command! UNIX set ff=unix 	" force unix style line endings
 command! MAC set ff=mac 	" force mac style line endings
-
-" This will display the path of the current file in the status line
-" It will also copy the path to the unnamed register so it can be pasted
-" with p or C-r C-r
-command! FILEPATH call g:getFilePath()
-
-function! g:getFilePath()
-    let @" = expand("%:p")
-    echom "Current file:" expand("%:p")
-endfunc
 
 "============= Spell Check =============
 
@@ -93,7 +73,7 @@ endfunc
 "============= Line Numbers =============
 
 set nu		" absolute line numbers
-"set cul		" highlight cursor line 
+set cul		" highlight cursor line 
 set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 
 "============= Scrolling & Position Tweaks =============
@@ -215,6 +195,7 @@ imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 "============== NERDTree ================
 
 let NERDTreeQuitOnOpen = 1
+let NERDTreeDirArrows = 0
 
 " lynx-like motion
 let NERDTreeMapPreview		= '<Right>'

@@ -15,6 +15,7 @@ zstyle :compinstall filename '~/.zshrc'
 
 # why would you type 'cd dir' if you could just type 'dir'?
 setopt AUTO_CD
+setopt BASH_AUTO_LIST
 
 # Now we can pipe to multiple outputs!
 setopt MULTIOS
@@ -200,7 +201,7 @@ bindkey -M menuselect '^M' .accept-line
 bindkey -M viins '\C-i' complete-word
 
 setopt list_ambiguous
-setopt COMPLETE_IN_WORD
+#setopt COMPLETE_IN_WORD
 setopt AUTO_LIST
 
 # Faster! (?)

@@ -27,13 +27,13 @@ nnoremap <F3> :tabp<CR>
 nnoremap <F4> :tabn<CR>
 nnoremap <F6> :tabe<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
-map <F7> :buffers<CR>:buffer<SPACE>
+nnoremap <F7> :buffers<CR>:buffer<SPACE>
 map <F8> :shell<CR><CR>
 map <F9> :make!<CR>
 
 " build tags with Ctrl-F12
-map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=*.vim --exclude=tags --exclude=*.htm --exclude=*.html .<CR>
-"
+map <F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q '--exclude=*.vim' --exclude=tags '--exclude=*.htm' '--exclude=*.html' .<CR>
+
 " normally <C-l> clears and redraws the screen, but here we're adding the
 " disabling of the yellow search highlighting (the :noh command)
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
@@ -48,7 +48,22 @@ nnoremap <A-Down>	<C-W>j<CR>
 nnoremap <silent> <A-S-Left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
+" Mappings in insert mode
+imap <F3> <Esc><F3>
+imap <F4> <Esc><F4>
+imap <F5> <Esc><F5>
+imap <F6> <Esc><F6>
+imap <F7> <Esc><F7>
+imap <F8> <Esc><F8>
+imap <F9> <Esc><F9>
+imap <A-Left>	<Esc><A-Left>
+imap <A-Right>	<Esc><A-Right>
+imap <A-Up>  	<Esc><A-Up>
+imap <A-Down>	<Esc><A-Down>
+
 set clipboard=unnamed
+
+set ttimeoutlen=10
 
 "============= Buffers =============
 
@@ -73,7 +88,7 @@ command! MAC set ff=mac 	" force mac style line endings
 "============= Line Numbers =============
 
 set nu		" absolute line numbers
-set cul		" highlight cursor line 
+"set cul		" highlight cursor line 
 set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 
 "============= Scrolling & Position Tweaks =============
@@ -238,22 +253,30 @@ let g:tex_flavor='latex'
 colorscheme default
 highlight clear
 set background=dark
-"highlight Comment		ctermfg=lightblue
-highlight ModeMsg		ctermbg=blue
-highlight TabLine		ctermfg=black ctermbg=white
-highlight TabLineSel	ctermfg=white ctermbg=blue
 
-highlight StatusLine	ctermfg=white ctermbg=black
-highlight StatusLineNC	ctermfg=gray  ctermbg=black
+highlight ModeMsg		cterm=bold	ctermbg=darkred
+highlight TabLineSel	cterm=bold	ctermfg=white	ctermbg=darkblue
+highlight TabLine		cterm=NONE	ctermfg=black	ctermbg=white
+
+highlight StatusLine	cterm=bold	ctermfg=white	ctermbg=darkblue
+highlight StatusLineNC	cterm=NONE	ctermfg=black	ctermbg=white
+
+highlight CursorLine	cterm=NONE	ctermbg=darkblue
+highlight CursorLineNr	cterm=NONE	ctermfg=yellow
+highlight LineNr		cterm=NONE	ctermfg=yellow
+
+if has("autocmd")
+	au InsertEnter * highlight LineNr ctermfg=red
+	au InsertLeave * highlight LineNr ctermfg=yellow
+	au InsertEnter * highlight CursorLineNr ctermfg=red
+	au InsertLeave * highlight CursorLineNr ctermfg=yellow
+endif
 
 " OmniComplete menu
-highlight Pmenu         ctermfg=white ctermbg=blue		" menu element
-highlight PmenuSel      ctermfg=white ctermbg=red		" selected element
-highlight PmenuSbar     ctermfg=white ctermbg=white		" bg - scrollbar background
-highlight PmenuThumb    ctermfg=red   ctermbg=white		" fg - scrollbar scrolling element
-
-" NERDTree
-highlight Directory		ctermfg=lightblue
+highlight Pmenu         cterm=NONE	ctermfg=white	ctermbg=darkblue	" menu element
+highlight PmenuSel      cterm=NONE	ctermfg=white	ctermbg=darkred		" selected element
+highlight PmenuSbar     cterm=NONE	ctermfg=white	ctermbg=white		" scrollbar
+highlight PmenuThumb    cterm=NONE	ctermfg=white	ctermbg=darkred		" scrollbar scrolling element
 
 " screen keys correction
 if &term =~ '^screen'

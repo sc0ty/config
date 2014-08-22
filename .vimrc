@@ -285,5 +285,8 @@ if &term =~ '^screen'
     execute "set <xDown>=\e[1;*B"
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
+
+	" 16 colors under due to problems with 256-colors under tmux
+	set t_Co=16
 endif
 

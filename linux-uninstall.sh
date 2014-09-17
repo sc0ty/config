@@ -1,22 +1,31 @@
 #!/bin/sh
+source ./functions.sh
 
-uninst () {
-	if [ -L "${HOME}/$1" ]
-	then
-		rm -f "${HOME}/$1"
-	fi
+echo "LINUX CONFIG:"
+for conf in "${CONF_LINUX[@]}"; do
+	restore "$conf"
+done
 
-	if [ -e "./backup/$1" ]
-	then
-		mv -n "./backup/$1" "${HOME}/$1" 
-	fi
-}
+which xterm &> /dev/null
+if [ "$?" == "0" ]; then
+	echo "XTERM CONFIG:"
 
-uninst .vim
-uninst .vimrc
-uninst .bashrc
-uninst .zshrc
-uninst .tmux.conf
-uninst .Xresources
-xrdb -merge ~/.Xresources
+	for conf in "${CONF_XTERM[@]}"; do
+		restore "$conf"
+	done
 
+	echo "  * merging resources"
+	xrdb -merge ~/.Xresources
+fi
+
+if [ -n "$CYGWIN" ]; then
+	echo "CYGWIN CONFIG:"
+
+	for conf in "${CONF_CYGWIN[@]}"; do
+		restore "$conf"
+	done
+
+	for conf in "${CONF_CYGWIN_APPEND[@]}"; do
+		restore_overwrite "$conf"
+	done
+fi

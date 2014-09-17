@@ -1,26 +1,36 @@
 #!/bin/sh
+source ./functions.sh
 
-inst () {
-	if [ ! -e "./backup/$1" ]
-	then
-		mv -n "${HOME}/$1" "./backup/$1"
-	fi
-	
-	if [ -d "${PWD}/$1" ]
-	then
-		ln -sf "${PWD}/$1" "${HOME}/" 
-	else
-		ln -sf "${PWD}/$1" "${HOME}/$1" 
-	fi
-}
+echo "LINUX CONFIG:"
+for conf in "${CONF_LINUX[@]}"; do
+	backup "$conf"
+	install "$conf"
+done
 
-mkdir -p "./backup"
+which xterm &> /dev/null
+if [ "$?" == "0" ]; then
+	echo "XTERM CONFIG:"
 
-inst .vim
-inst .vimrc
-inst .bashrc
-inst .zshrc
-inst .tmux.conf
-inst .Xresources
-xrdb -merge ~/.Xresources
+	for conf in "${CONF_XTERM[@]}"; do
+		backup "$conf"
+		install "$conf"
+	done
+
+	echo "  * merging resources"
+	xrdb -merge ~/.Xresources
+fi
+
+if [ -n "$CYGWIN" ]; then
+	echo "CYGWIN CONFIG:"
+
+	for conf in "${CONF_CYGWIN[@]}"; do
+		backup "$conf"
+		install "$conf" "$DIR_CYGWIN"
+	done
+
+	for conf in "${CONF_CYGWIN_APPEND[@]}"; do
+		backup_cp "$conf"
+		install_append "$conf" "$DIR_CYGWIN"
+	done
+fi
 

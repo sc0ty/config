@@ -53,7 +53,8 @@ setopt NO_CLOBBER
 
 
 ### Modules ###
-autoload -U promptinit zcalc zsh-mime-setup colors
+autoload -U compinit promptinit zcalc zsh-mime-setup colors
+compinit
 promptinit
 zsh-mime-setup
 colors

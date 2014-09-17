@@ -53,8 +53,7 @@ setopt NO_CLOBBER
 
 
 ### Modules ###
-autoload -U compinit promptinit zcalc zsh-mime-setup colors
-compinit
+autoload -U promptinit zcalc zsh-mime-setup colors
 promptinit
 zsh-mime-setup
 colors
@@ -115,12 +114,17 @@ export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes
 ### Parent shell name ###
 
 # track names of programs running shell
-PNAME=$(ps -p $PPID -o comm=)
+if [[ -n "$CYGWIN" ]] ; then
+	PNAME=$(basename "$(ps -p $PPID)")
+else
+	PNAME=$(ps -p $PPID -o comm=)
+fi
+
 if [[ "$PNAME" == "mc" ]] ; then
 	TITLE="${TITLE}[mc]"
 elif [[ "$PNAME" == "vim" ]] || [[ -n "$VIM" ]] ; then
 	TITLE="${TITLE}[vim]"
-elif [[ "$PNAME" == "tmux" ]] ; then
+elif [[ "$PNAME" == "tmux" ]] || [[ -n "$TMUX" ]] ; then
 	TITLE=""
 elif [[ "$PNAME" == "screen" ]] || [[ -n "$STY" ]] ; then
 	TITLE=""

@@ -32,12 +32,17 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # track names of programs running shell
-PNAME=$(ps -p $PPID -o comm=)
+if [ -n "$CYGWIN" ] ; then
+	PNAME=$(basename "$(ps -p $PPID)")
+else
+	PNAME=$(ps -p $PPID -o comm=)
+fi
+
 if [ "$PNAME" == "mc" ] ; then
 	TITLE="${TITLE}[mc]"
 elif [ "$PNAME" == "vim" ] || [ -n "$VIM" ] ; then
 	TITLE="${TITLE}[vim]"
-elif [ "$PNAME" == "tmux" ] ; then
+elif [ "$PNAME" == "tmux" ] || [ -n "$TMUX" ] ; then
 	TITLE=""
 elif [ "$PNAME" == "screen" ] || [ -n "$STY" ] ; then
 	TITLE=""

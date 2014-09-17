@@ -12,7 +12,6 @@ DIR_CYGWIN="cygwin"
 backup () {
 	if [ ! -e "./backup/$1" ] && [ -e "${HOME}/$1" ]; then
 		echo "  * backing up $1"
-
 		mkdir -p "./backup"
 		mv -n "${HOME}/$1" "./backup/$1"
 	fi
@@ -21,6 +20,7 @@ backup () {
 backup_cp() {
 	if [ ! -e "./backup/$1" ] && [ -e "${HOME}/$1" ]; then
 		echo "  * backing up $1  [CP]"
+		mkdir -p "./backup"
 		cp "${HOME}/$1" "./backup/"
 	fi
 }

@@ -40,7 +40,7 @@ fi
 
 if [ "$PNAME" == "mc" ] ; then
 	TITLE="${TITLE}[mc]"
-elif [ "$PNAME" == "vim" ] || [ -n "$VIM" ] ; then
+elif [ "$PNAME" == "vim" ] ; then
 	TITLE="${TITLE}[vim]"
 elif [ "$PNAME" == "tmux" ] || [ -n "$TMUX" ] ; then
 	TITLE=""

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+TITLE=$(basename "$(ps -p $PPID)")
+MSG="$TITLE"
+
+if [ -z "$1" ]; then
+	if [ "$1" == "info" ] || [ "$1" == "warn" ] || [ "$1" == "error" ]; then
+		MSG="${@:2}"
+		ICON="/t $1"
+	else
+		ICON=
+		MSG="$@"
+	fi
+fi
+
+notifu.exe /p "$TITLE" "$ICON" /m "$MSG" &
+

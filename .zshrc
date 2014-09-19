@@ -220,6 +220,7 @@ if [ -n "$CYGWIN" ]; then
 	alias pwdp=pwdc
 	alias cdc="cd \`cat /dev/clipboard\`"
 	alias cdp=cdc
+	alias alert='notify-send "$([ $? = 0 ] || echo error)" "$(echo $history[$HISTCMD] |sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 else
 	if [ -n "$DISPLAY" ]; then
 		alias p2c="xsel -po | xsel -b"
@@ -308,6 +309,7 @@ _force_rehash() {
   return 1  # Because we didn't really complete anything
 }
 
+export PATH="${PATH}:${HOME}/bin"
 
 # defaul text editor
 export EDITOR=vim

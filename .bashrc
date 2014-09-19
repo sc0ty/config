@@ -151,27 +151,35 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # alias definitions
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias q="exit"
 alias loop="while [ 1 ] ; do "
-alias xterm1="xtermcontrol --bg=#000000"
-alias xterm2="xtermcontrol --bg=#002b36"
 alias mc="mc -x"
 
-if [ -n "$DISPLAY" ] ; then
-	alias p2c="xsel -po | xsel -b"
-	alias c2p="xsel -bo | xsel -p"
-	alias pwdc="echo -n \`pwd\` | xsel -b"
-	alias pwdp="echo -n \`pwd\` | xsel -p"
-	alias cdc="cd \`xsel -bo\`"
-	alias cdp="cd \`xsel -po\`"
-else
-	alias pwdc="pwd > /tmp/clip"
+if [ -n "$CYGWIN" ]; then
+	alias pwdc="pwd > /dev/clipboard"
 	alias pwdp=pwdc
-	alias cdc="cd \`cat /tmp/clip\`"
+	alias cdc="cd \`cat /dev/clipboard\`"
 	alias cdp=cdc
-fi
+	alias alert='notify-send "$([ $? = 0 ] || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+else
+	if [ -n "$DISPLAY" ]; then
+		alias p2c="xsel -po | xsel -b"
+		alias c2p="xsel -bo | xsel -p"
+		alias pwdc="echo -n \`pwd\` | xsel -b"
+		alias pwdp="echo -n \`pwd\` | xsel -p"
+		alias cdc="cd \`xsel -bo\`"
+		alias cdp="cd \`xsel -po\`"
+	else
+		alias pwdc="pwd > /tmp/clip"
+		alias pwdp=pwdc
+		alias cdc="cd \`cat /tmp/clip\`"
+		alias cdp=cdc
+	fi
 
+	alias xterm1="xtermcontrol --bg=#000000"
+	alias xterm2="xtermcontrol --bg=#002b36"
+	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -183,6 +191,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export PATH="${PATH}:${HOME}/bin"
 
 # defaul text editor
 export EDITOR=vim

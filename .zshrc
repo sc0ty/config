@@ -211,25 +211,33 @@ fi
 unset color_prompt
 
 ### Aliases definitions ###
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(echo $history[$HISTCMD] |sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias q="exit"
 alias loop="while [ 1 ] ; do "
-alias xterm1="xtermcontrol --bg=#000000"
-alias xterm2="xtermcontrol --bg=#002b36"
 alias mc="mc -x"
 
-if [ -n "$DISPLAY" ] ; then
-	alias p2c="xsel -po | xsel -b"
-	alias c2p="xsel -bo | xsel -p"
-	alias pwdc="echo -n \`pwd\` | xsel -b"
-	alias pwdp="echo -n \`pwd\` | xsel -p"
-	alias cdc="cd \`xsel -bo\`"
-	alias cdp="cd \`xsel -po\`"
-else
-	alias pwdc="pwd >! /tmp/clip"
+if [ -n "$CYGWIN" ]; then
+	alias pwdc="pwd >! /dev/clipboard"
 	alias pwdp=pwdc
-	alias cdc="cd \`cat /tmp/clip\`"
+	alias cdc="cd \`cat /dev/clipboard\`"
 	alias cdp=cdc
+else
+	if [ -n "$DISPLAY" ]; then
+		alias p2c="xsel -po | xsel -b"
+		alias c2p="xsel -bo | xsel -p"
+		alias pwdc="echo -n \`pwd\` | xsel -b"
+		alias pwdp="echo -n \`pwd\` | xsel -p"
+		alias cdc="cd \`xsel -bo\`"
+		alias cdp="cd \`xsel -po\`"
+	else
+		alias pwdc="pwd >! /tmp/clip"
+		alias pwdp=pwdc
+		alias cdc="cd \`cat /tmp/clip\`"
+		alias cdp=cdc
+	fi
+
+	alias xterm1="xtermcontrol --bg=#000000"
+	alias xterm2="xtermcontrol --bg=#002b36"
+	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(echo $history[$HISTCMD] |sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 fi
 
 

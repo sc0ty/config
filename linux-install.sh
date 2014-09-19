@@ -30,7 +30,7 @@ if [ -n "$CYGWIN" ]; then
 
 	for conf in "${CONF_CYGWIN_APPEND[@]}"; do
 		backup_cp "$conf"
-		install_append "$conf" "$DIR_CYGWIN"
+		install_append_existing "$conf" "$DIR_CYGWIN"
 	done
 fi
 

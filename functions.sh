@@ -5,7 +5,7 @@ CONF_LINUX=(.vim .vimrc .bashrc .zshrc .tmux.conf)
 CONF_XTERM=(.Xresources)
 
 CONF_CYGWIN=(.minttyrc)
-CONF_CYGWIN_APPEND=(.bashrc_local)
+CONF_CYGWIN_APPEND=(.babunrc)
 DIR_CYGWIN="cygwin"
 
 
@@ -42,16 +42,19 @@ install () {
 	fi
 }
 
-install_append () {
+install_append_existing () {
 	src="$1"
 	dst="$1"
 	if [ -n "$2" ] ; then
 		src="$2/$1"
 	fi
 
-	echo "  * installing ${src} to ${dst}  [APPEND]"
-	cat "${PWD}/${src}" >> "${HOME}/${dst}"
+	if [ -e "${HOME}/${dst}" ] && [ "$(grep -Fxc -f ${PWD}/${src} ${HOME}/${dst})" -lt "$(wc -l < ${PWD}/${src})" ]; then
+		echo "  * installing ${src} to ${dst}  [APPEND]"
+		cat "${PWD}/${src}" >> "${HOME}/${dst}"
+	fi
 }
+
 
 restore () {
 	if [ -e "./backup/$1" ]; then
@@ -75,3 +78,18 @@ restore_overwrite() {
 	fi
 }
 
+evalcmd () {
+	echo "* $@"
+	$@
+}
+
+evalorexit () {
+	echo "* $@"
+	$@
+	if [ "$?" != "0" ]; then
+		echo
+		echo "Failed during '$@'"
+		exit
+	fi
+}
+ 

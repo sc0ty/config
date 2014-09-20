@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 source ./../functions.sh
 
 MC_VERSION=mc-4.8.13

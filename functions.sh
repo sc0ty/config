@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 CONF_LINUX=(.vim .vimrc .bashrc .zshrc .tmux.conf)

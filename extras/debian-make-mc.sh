@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 source ./../functions.sh
 
 evalcmd sudo apt-get update

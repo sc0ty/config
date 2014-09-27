@@ -1,63 +1,43 @@
 ### Hisory ###
 
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=100000
-setopt hist_ignore_space
-setopt inc_append_history 
-setopt share_history
+HISTSIZE=1000				# lines to read on startup
+SAVEHIST=100000				# lines to store in HISTFILE
+setopt hist_ignore_space	# do not store commands started with space
+setopt inc_append_history	# append HISTFILE after every instruction
+setopt share_history		# share history between zsh sessions
 
 
 ### Options ###
 
-setopt notify
+setopt notify				# report status of the background jobs immediately
 zstyle :compinstall filename '~/.zshrc'
-
-# why would you type 'cd dir' if you could just type 'dir'?
-setopt AUTO_CD
-setopt BASH_AUTO_LIST
-
-# Now we can pipe to multiple outputs!
-setopt MULTIOS
-
-# This will use named dirs when possible
-setopt AUTO_NAME_DIRS
-
-# If we have a glob this will expand it
-#setopt GLOB_COMPLETE
+setopt AUTO_CD				# cd without cd
+setopt BASH_AUTO_LIST		# auto list choices on double tab for ambigous completion
+setopt MULTIOS				# multiple pipelines
+setopt AUTO_NAME_DIRS		# auto expand dir names
+#setopt GLOB_COMPLETE		# expand globs
 setopt PUSHD_MINUS
 
 # use magic (this is default, but it can't hurt!)
 setopt ZLE
-
 setopt NO_HUP
-
-setopt VI
-
-setopt IGNORE_EOF
-
-# If I could disable Ctrl-s completely I would!
-setopt NO_FLOW_CONTROL
-
-# Keep echo "station" > station from clobbering station
-setopt NO_CLOBBER
-
-# Case insensitive globbing
-#setopt NO_CASE_GLOB
-
-# Be Reasonable!
-#setopt NUMERIC_GLOB_SORT
-
-# I don't know why I never set this before.
+setopt VI					
+setopt IGNORE_EOF			# do not exit on ^D
+setopt NO_FLOW_CONTROL		# disable ^S
+setopt NO_CLOBBER			# do not overwrite files when redirected with stream redirection
+#setopt NO_CASE_GLOB		# case insensitive globbing
+#setopt NUMERIC_GLOB_SORT	# sort filenames numerically
 #setopt EXTENDED_GLOB
 
 
 ### Modules ###
-autoload -U compinit promptinit zcalc zsh-mime-setup colors
+autoload -U compinit promptinit zcalc zsh-mime-setup colors select-word-style
 compinit
 promptinit
 zsh-mime-setup
 colors
+select-word-style bash	# ^W words delimiter will be slashes, dots etc, not only whitespaces
 zmodload zsh/parameter
 zmodload zsh/complist
 

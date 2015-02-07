@@ -37,10 +37,12 @@ function set_icon_prev() {
 	set_icon_command $PNAME
 }
 
-which xseticon > /dev/null
-if [[ $? == 0 ]]; then
-	precmd_functions=($precmd_functions set_icon_term)
-	preexec_functions=($preexec_functions set_icon_command)
-	zshexit_functions=($preexec_functions set_icon_prev)
+if [[ -n "$WINDOWID" ]]; then
+	which xseticon > /dev/null
+	if [[ $? == 0 ]]; then
+		precmd_functions=($precmd_functions set_icon_term)
+		preexec_functions=($preexec_functions set_icon_command)
+		zshexit_functions=($preexec_functions set_icon_prev)
+	fi
 fi
 

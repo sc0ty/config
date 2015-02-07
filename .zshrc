@@ -169,6 +169,7 @@ fi
 
 # command prompt
 PS1="${AppColor}${TITLE}${ColorOff}${UserNameColor}%n${ColorOff}@${HostNameColor}%M${ColorOff}:${PathColor}%~${ColorOff} %#"
+RPROMPT=""
 
 # colorful man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'

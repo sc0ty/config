@@ -110,6 +110,8 @@ set noexpandtab 	" don't expand tabs to spaces (cause fuck that)
 
 set backspace=indent,eol,start
 
+set listchars=tab:>-,trail:~,extends:>,precedes:<
+
 "============= Search & Matching =============
 
 set showcmd			" Show (partial) command in status line.

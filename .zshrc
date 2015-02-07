@@ -222,6 +222,27 @@ else
 fi
 
 
+### Terminal title setup ###
+function title() {
+	print -Pn "\e]2;$@\a"
+}
+function set_title_command() {
+	#title $TITLE $(fc -l $HISTCMD|cut -d' ' -f2-)
+	if [[ $1 == fg ]]; then
+        title $TITLE ${jobtexts[%+]}
+    elif [[ $1 == fg\ * ]]; then
+        title $TITLE ${jobtexts[${1#fg }]}
+    else
+		title $TITLE $1
+    fi
+}
+function set_title_pwd() {
+	title "$TITLE $PWD"
+}
+precmd_functions=($precmd_functions set_title_pwd)
+preexec_functions=($preexec_functions set_title_command)
+
+
 ### Autocomplete ###
 
 # press enter once to select and accept prompted command

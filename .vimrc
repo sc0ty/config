@@ -267,6 +267,20 @@ highlight CursorLine	cterm=NONE	ctermbg=darkblue
 highlight CursorLineNr	cterm=NONE	ctermfg=yellow
 highlight LineNr		cterm=NONE	ctermfg=yellow
 
+highlight htmlH1 cterm=bold ctermfg=green
+highlight link htmlH2 htmlH1
+highlight link htmlH3 htmlH1
+highlight link htmlH4 htmlH1
+highlight link htmlH5 htmlH1
+highlight link htmlH6 htmlH1
+highlight link markdownHeadingDelimiter htmlH1
+highlight htmlBold       cterm=bold
+highlight htmlItalic     cterm=underline
+highlight htmlBoldItalic cterm=underline,bold
+highlight markdownCode   cterm=NONE ctermfg=cyan
+highlight link markdownCodeBlock markdownCode
+highlight link markdownCodeDelimiter markdownCode
+
 if has("autocmd")
 	au InsertEnter * highlight LineNr ctermfg=red
 	au InsertLeave * highlight LineNr ctermfg=yellow

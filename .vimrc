@@ -88,8 +88,12 @@ command! MAC set ff=mac 	" force mac style line endings
 "============= Line Numbers =============
 
 set nu		" absolute line numbers
-"set cul		" highlight cursor line 
+set cul		" highlight cursor line 
 set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
+"
+" highlight column past 80
+set colorcolumn=81
+execute "set colorcolumn=" . join(range(81,299), ',')
 
 "============= Scrolling & Position Tweaks =============
 
@@ -252,47 +256,11 @@ let g:tex_flavor='latex'
 
 "============== Colors =================
 
-colorscheme default
 highlight clear
 set background=dark
+let g:badwolf_tabline=3
+colorscheme badwolf2
 
-highlight ModeMsg		cterm=bold	ctermbg=darkred
-highlight TabLineSel	cterm=bold	ctermfg=white	ctermbg=darkblue
-highlight TabLine		cterm=NONE	ctermfg=black	ctermbg=white
-
-highlight StatusLine	cterm=bold	ctermfg=white	ctermbg=darkblue
-highlight StatusLineNC	cterm=NONE	ctermfg=black	ctermbg=white
-
-highlight CursorLine	cterm=NONE	ctermbg=darkblue
-highlight CursorLineNr	cterm=NONE	ctermfg=yellow
-highlight LineNr		cterm=NONE	ctermfg=yellow
-
-highlight htmlH1 cterm=bold ctermfg=green
-highlight link htmlH2 htmlH1
-highlight link htmlH3 htmlH1
-highlight link htmlH4 htmlH1
-highlight link htmlH5 htmlH1
-highlight link htmlH6 htmlH1
-highlight link markdownHeadingDelimiter htmlH1
-highlight htmlBold       cterm=bold
-highlight htmlItalic     cterm=underline
-highlight htmlBoldItalic cterm=underline,bold
-highlight markdownCode   cterm=NONE ctermfg=cyan
-highlight link markdownCodeBlock markdownCode
-highlight link markdownCodeDelimiter markdownCode
-
-if has("autocmd")
-	au InsertEnter * highlight LineNr ctermfg=red
-	au InsertLeave * highlight LineNr ctermfg=yellow
-	au InsertEnter * highlight CursorLineNr ctermfg=red
-	au InsertLeave * highlight CursorLineNr ctermfg=yellow
-endif
-
-" OmniComplete menu
-highlight Pmenu         cterm=NONE	ctermfg=white	ctermbg=darkblue	" menu element
-highlight PmenuSel      cterm=NONE	ctermfg=white	ctermbg=darkred		" selected element
-highlight PmenuSbar     cterm=NONE	ctermfg=white	ctermbg=white		" scrollbar
-highlight PmenuThumb    cterm=NONE	ctermfg=white	ctermbg=darkred		" scrollbar scrolling element
 
 " screen keys correction
 if &term =~ '^screen'

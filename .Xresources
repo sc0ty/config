@@ -1,6 +1,6 @@
 ! Use a nice truetype font and size by default... 
 xterm*faceName: DejaVu Sans Mono Book
-xterm*faceSize: 9
+!xterm*faceSize: 9
 xterm*faceSize1: 6
 xterm*faceSize2: 7
 xterm*faceSize3: 8
@@ -59,3 +59,6 @@ xterm*metaSendsEscape: true
 xterm*allowWindowOps: true
 xterm*allowTitleOps: true
 xterm*allowFontOps: true
+
+#include ".Xresources_local"
+

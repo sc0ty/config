@@ -14,10 +14,6 @@ if [ "$?" == "0" ]; then
 		restore "$conf"
 	done
 
-	for conf in "${CONF_LINUX_APPEND[@]}"; do
-		restore_overwrite "$conf"
-	done
-
 	echo "  * merging resources"
 	xrdb -merge ~/.Xresources
 fi

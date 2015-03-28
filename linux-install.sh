@@ -16,11 +16,6 @@ if [ "$?" == "0" ]; then
 		install "$conf"
 	done
 
-	for conf in "${CONF_LINUX_APPEND[@]}"; do
-		backup_cp "$conf"
-		install_append_existing "$conf"
-	done
-
 	echo "  * merging resources"
 	xrdb -merge ~/.Xresources
 fi

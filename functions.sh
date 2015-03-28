@@ -2,7 +2,6 @@
 
 
 CONF_LINUX=(.vim .vimrc .bashrc .zshrc .tmux.conf)
-CONF_LINUX_APPEND=(.profile)
 CONF_XTERM=(.Xresources)
 
 CONF_CYGWIN=(.minttyrc)

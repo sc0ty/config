@@ -233,23 +233,6 @@ set nowb 			" suppress creation of ~ files
 
 "============== Filetypes ==============
 
-" type detection for JSON files (makes snippets work)
-au! BufRead,BufNewFile *.json set filetype=json 
-
-" force txt files to be highlighted as html
-au BufRead,BufNewFile *.txt setfiletype html
-
-" Fix HTML indenting quirk as per http://bit.ly/XnlHJz
-autocmd FileType html setlocal indentkeys-=*<Return>
-
-" force php files to be treated as php/html - necessary for snipmate to work
-"au BufRead,BufNewFile *.php set filetype=php.html
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':

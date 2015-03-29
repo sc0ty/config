@@ -1,0 +1,35 @@
+### Build VIM ###
+
+# prepare env (Ubuntu)
+sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev mercurial
+sudo apt-get purge vim vim-runtime gvim vim-tiny vim-common vim-gui-common
+
+# get repo
+hg -v clone https://code.google.com/p/vim/
+cd vim
+
+# build
+export VIMRUNTIMEDIR=/usr/share/vim/vim74
+./configure --with-features=huge --enable-multibyte --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7/config  --enable-perlinterp  --enable-luainterp --enable-gui=gtk2 --enable-cscope --prefix=/usr
+make -j4 VIMRUNTIMEDIR=$VIMRUNTIMEDIR
+
+#install
+sudo make install
+
+### Build XTERM ###
+#prepare env
+sudo apt-get build-dep xterm
+sudo apt-get purge xterm
+
+#get sources
+http://invisible-island.net/datafiles/release/xterm.tar.gz
+tar xf xterm.tar.gz
+
+#build
+./configure --prefix=/usr  --enable-256-color --enable-88-color --enable-builtin-xpms --enable-exec-xterm
+make
+
+#install
+sudo make install
+sudo make install-ti
+

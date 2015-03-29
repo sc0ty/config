@@ -16,6 +16,11 @@ if [ "$?" == "0" ]; then
 		install "$conf"
 	done
 
+	if [ ! -e "${HOME}/.Xresources_local" ]; then
+		echo "  * installing .Xresources_local to ${HOME}"
+		cp ".Xresources_local" "${HOME}/"
+	fi
+
 	echo "  * merging resources"
 	xrdb -merge ~/.Xresources
 fi

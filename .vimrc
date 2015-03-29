@@ -92,8 +92,9 @@ set cul		" highlight cursor line
 set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 "
 " highlight column past 80
-set colorcolumn=81
-execute "set colorcolumn=" . join(range(81,299), ',')
+if exists('+colorcolumn')
+	execute "set colorcolumn=" . join(range(81,299), ',')
+endif
 
 "============= Scrolling & Position Tweaks =============
 

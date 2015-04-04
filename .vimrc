@@ -214,6 +214,12 @@ let g:SuperTabMappingBackward = '<s-c-space>'
 
 imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 
+"============= cscope/ctags =============
+
+set cscopetag
+set csto=0			" search cscope before ctags
+set cscopeverbose
+
 "============== NERDTree ================
 
 let NERDTreeQuitOnOpen = 1

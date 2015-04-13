@@ -223,7 +223,11 @@ else
 fi
 
 function newt() {
-	TITLE= xterm &
+	if [ -n "$XEMBED" ]; then
+		TITLE= xterm -into $XEMBED &
+	else
+		TITLE= xterm &
+	fi
 	disown
 }
 
@@ -233,17 +237,22 @@ function title() {
 	print -Pn "\e]2;$@\a"
 }
 function set_title_command() {
-	#title $TITLE $(fc -l $HISTCMD|cut -d' ' -f2-)
-	if [[ $1 == fg ]]; then
-        title $TITLE ${jobtexts[%+]}
-    elif [[ $1 == fg\ * ]]; then
-        title $TITLE ${jobtexts[${1#fg }]}
+	if [[ "$1" == "mc" ]] || [[ "$1" == mc\ * ]]; then
+		title "[mc] $PWD"
+	elif [[ "$1" == "fg" ]]; then
+        title "$TITLE ${jobtexts[%+]}"
+    elif [[ "$1" == fg\ * ]]; then
+        title "$TITLE ${jobtexts[${1#fg }]}"
     else
-		title $TITLE $1
+		title "$TITLE $1"
     fi
 }
 function set_title_pwd() {
-	title "$TITLE $PWD"
+	if [ -z "$TITLE" ]; then
+		title "[zsh] $PWD"
+	else
+		title "$TITLE $PWD"
+	fi
 }
 precmd_functions=($precmd_functions set_title_pwd)
 preexec_functions=($preexec_functions set_title_command)

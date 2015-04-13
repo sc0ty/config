@@ -155,7 +155,7 @@ set smartindent
 
 set backspace=indent,eol,start 	" backspace over everything in insert mode
 
-" ============== Status Line ==============
+" ============== Status Line and title ==============
 
 set ls=2 			" Always show status line
 set laststatus=2
@@ -168,8 +168,9 @@ set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
 set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
 set statusline+=%{&fileformat}]              " file format
 set statusline+=%=                           " right align
-"set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
 set statusline+=%-14.(%l/%L,%c%)\ %<%P        " offset
+
+set titlestring=[vim]\ %f
 
 "============== Folding ==============
 

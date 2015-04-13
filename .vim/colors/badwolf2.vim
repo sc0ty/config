@@ -41,7 +41,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "badwolf"
+let colors_name = "badwolf2"
 
 if !exists("g:badwolf_html_link_underline") " {{{
     let g:badwolf_html_link_underline = 1
@@ -235,8 +235,8 @@ call s:HL('FoldColumn',		'mediumgravel', s:gutter)
 if has("autocmd")
 	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 	au WinLeave *                      setlocal nocursorline
-	au InsertEnter * call s:HL('CursorLineNr', 'coal',        'lightgravel', 'bold')
-	au InsertLeave * call s:HL('CursorLineNr', 'mediumgravel', s:gutter,     'NONE')
+	au InsertEnter * call s:HL('CursorLineNr', 'coal',         'taffy',  'bold')
+	au InsertLeave * call s:HL('CursorLineNr', 'mediumgravel', s:gutter, 'NONE')
 endif
 
 

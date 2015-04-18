@@ -85,7 +85,7 @@ command! MAC set ff=mac 	" force mac style line endings
 "set spell 		"enable in-line spell check
 "set spelllang=en
 
-"============= Line Numbers =============
+"============= Line Numbers and Cursor =============
 
 set nu		" absolute line numbers
 set cul		" highlight cursor line 
@@ -95,6 +95,8 @@ set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 if exists('+colorcolumn')
 	execute "set colorcolumn=" . join(range(81,299), ',')
 endif
+
+let g:togglecursor_insert = 'underline'
 
 "============= Scrolling & Position Tweaks =============
 

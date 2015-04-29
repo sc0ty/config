@@ -8,6 +8,12 @@ xterm*faceSize4: 10
 xterm*faceSize5: 12
 xterm*faceSize6: 16
 
+! Anitaliasing in XFT
+Xft.antialias: true
+Xft.hinting:   true
+Xft.hintstyle: hintfull
+Xft.rgba:      rgb
+
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
 xterm*loginshell: true
 
@@ -59,6 +65,14 @@ xterm*metaSendsEscape: true
 xterm*allowWindowOps: true
 xterm*allowTitleOps: true
 xterm*allowFontOps: true
+
+! bell config
+xterm*visualBell: true
+xterm*bellIsUrgent: true
+
+! history in less with ctrl+/
+XTerm.*.printerCommand: xterm -T History -e 'less -ir <&3' 3<&0
+XTerm.*.translations: #override Ctrl <Key>slash: print-everything()
 
 #include ".Xresources_local"
 

@@ -72,7 +72,7 @@ xterm*bellIsUrgent: true
 
 ! history in less with ctrl+/
 XTerm.*.printerCommand: xterm -T History -e 'less -ir <&3' 3<&0
-XTerm.*.translations: #override Ctrl <Key>slash: print-everything()
+XTerm.*.translations: #override Ctrl <Key>slash: print-everything(colorAttrs)
 
 #include ".Xresources_local"
 

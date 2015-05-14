@@ -138,6 +138,12 @@ export TITLE
 
 ### Colors ###
 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	export REMOTE=1
+else
+	unset REMOTE
+fi
+
 # enable colors
 eval "`dircolors -b`"
 
@@ -151,7 +157,7 @@ if [ "$color_prompt" = yes ]; then
 	PathColor="%{$fg_bold[magenta]%}"
 	AppColor="%{$fg[cyan]%}"
 
-	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	if [ -n "$REMOTE" ]; then
 		HostNameColor="%{$fg_bold[yellow]%}"
 		UserNameColor="%{$fg_bold[yellow]%}"
 	fi

@@ -50,6 +50,10 @@ fi
 
 export TITLE
 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	export REMOTE=1
+fi
+
 # enable colors
 eval "`dircolors -b`"
 

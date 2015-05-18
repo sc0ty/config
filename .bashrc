@@ -118,7 +118,7 @@ if [ "$color_prompt" = yes ]; then
 	PathColor=$BPurple
 	AppColor=$Cyan
 
-	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	if [ -n "$REMOTE" ]; then
 		HostNameColor=$BYellow
 		UserNameColor=$BYellow
 	fi

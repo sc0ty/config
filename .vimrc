@@ -57,6 +57,7 @@ imap <F6> <Esc><F6>
 imap <F7> <Esc><F7>
 imap <F8> <Esc><F8>
 imap <F9> <Esc><F9>
+imap <C-F9> <Esc><C-F9>
 imap <A-Left>	<Esc><A-Left>
 imap <A-Right>	<Esc><A-Right>
 imap <A-Up>  	<Esc><A-Up>

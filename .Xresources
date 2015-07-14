@@ -18,7 +18,7 @@ Xft.rgba:      rgb
 xterm*loginshell: true
 
 ! I like a LOT of scrollback...
-xterm*saveLines: 1000000
+xterm*saveLines: 100000
 
 ! colors
 xterm*termName: xterm-256color

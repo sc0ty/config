@@ -71,8 +71,8 @@ xterm*visualBell: true
 xterm*bellIsUrgent: true
 
 ! history in less with ctrl+/
-XTerm.*.printerCommand: xterm -T History -e 'less -ir +G <&3' 3<&0
-XTerm.*.translations: #override Ctrl <Key>slash: print-everything(colorAttrs)
+|| [ -n "$SSH_TTY" ]; thenXTerm.*.printerCommand: xterm -T History -e 'less -ir +G <&3' 3<&0
+6Term.*.translations: #override Ctrl <Key>slash: print-everything(colorAttrs)
 
 #include ".Xresources_local"
 

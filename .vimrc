@@ -28,7 +28,6 @@ nnoremap <F4> :tabn<CR>
 nnoremap <F6> :tabe<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F7> :buffers<CR>:buffer<SPACE>
-map <F8> :shell<CR><CR>
 map <F9> :make!<CR>
 map <C-F9> :make clean<CR>
 
@@ -49,13 +48,16 @@ nnoremap <A-Down>	<C-W>j<CR>
 nnoremap <silent> <A-S-Left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
+if exists('$TMUX') 
+nnoremap K :!tmux split-window -h man <cword><CR><CR>
+endif
+
 " Mappings in insert mode
 imap <F3> <Esc><F3>
 imap <F4> <Esc><F4>
 imap <F5> <Esc><F5>
 imap <F6> <Esc><F6>
 imap <F7> <Esc><F7>
-imap <F8> <Esc><F8>
 imap <F9> <Esc><F9>
 imap <C-F9> <Esc><C-F9>
 imap <A-Left>	<Esc><A-Left>
@@ -258,14 +260,11 @@ colorscheme badwolf2
 
 
 " screen keys correction
-if &term =~ '^screen'
+if &term =~ '^screen' || &term =~ '^st'
     " tmux will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
     execute "set <xDown>=\e[1;*B"
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
-
-	" 16 colors under due to problems with 256-colors under tmux
-	set t_Co=16
 endif
 

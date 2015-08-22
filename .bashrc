@@ -50,7 +50,7 @@ fi
 
 export TITLE
 
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$REMOTEHOST" ]; then
 	export REMOTE=1
 fi
 

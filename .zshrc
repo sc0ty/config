@@ -268,14 +268,18 @@ function title() {
 	print -Pn "\e]2;$@\a"
 }
 function set_title_command() {
+	if [[ -n "$TITLE" ]]; then
+		tit="$TITLE "
+	fi
+
 	if [[ "$1" == "mc" ]] || [[ "$1" == mc\ * ]]; then
 		title "[mc] $PWD"
 	elif [[ "$1" == "fg" ]]; then
-        title "$TITLE ${jobtexts[%+]}"
+        title "${tit}${jobtexts[%+]}"
     elif [[ "$1" == fg\ * ]]; then
-        title "$TITLE ${jobtexts[${1#fg }]}"
+        title "${tit}${jobtexts[${1#fg }]}"
     else
-		title "$TITLE $1"
+		title "${tit}$1"
     fi
 }
 function set_title_pwd() {

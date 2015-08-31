@@ -29,6 +29,7 @@ setopt NO_CLOBBER			# do not overwrite files when redirected with stream redirec
 #setopt NO_CASE_GLOB		# case insensitive globbing
 #setopt NUMERIC_GLOB_SORT	# sort filenames numerically
 #setopt EXTENDED_GLOB
+setopt AUTO_PUSHD
 
 
 ### Modules ###

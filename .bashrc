@@ -158,7 +158,7 @@ fi
 alias q="exit"
 alias loop="while [ 1 ] ; do "
 alias mc="mc -x"
-alias l="ls -l"
+alias l="ls -lh"
 
 if [ -n "$CYGWIN" ]; then
 	alias pwdc="pwd > /dev/clipboard"

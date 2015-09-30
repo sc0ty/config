@@ -23,7 +23,7 @@ setopt PUSHD_MINUS
 setopt ZLE
 setopt NO_HUP
 setopt VI					
-setopt IGNORE_EOF			# do not exit on ^D
+#setopt IGNORE_EOF			# do not exit on ^D
 setopt NO_FLOW_CONTROL		# disable ^S
 setopt NO_CLOBBER			# do not overwrite files when redirected with stream redirection
 #setopt NO_CASE_GLOB		# case insensitive globbing
@@ -156,10 +156,10 @@ if [[ "$PNAME" == "mc" ]] ; then
 	TITLE="${TITLE}[mc]"
 elif [[ "$PNAME" == "vim" ]] ; then
 	TITLE="${TITLE}[vim]"
-elif [[ "$PNAME" == "tmux" ]] || [[ -n "$TMUX" ]] ; then
-	TITLE=""
-elif [[ "$PNAME" == "screen" ]] || [[ -n "$STY" ]] ; then
-	TITLE=""
+#elif [[ "$PNAME" == "tmux" ]] || [[ -n "$TMUX" ]] ; then
+#	TITLE=""
+#elif [[ "$PNAME" == "screen" ]] || [[ -n "$STY" ]] ; then
+#	TITLE=""
 fi
 export TITLE
 

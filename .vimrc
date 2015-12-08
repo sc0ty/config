@@ -221,6 +221,8 @@ let g:SuperTabMappingBackward = '<s-c-space>'
 
 imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 
+NeoComplCacheEnable
+
 "============= cscope/ctags =============
 
 set cscopetag

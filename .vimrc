@@ -221,7 +221,8 @@ let g:SuperTabMappingBackward = '<s-c-space>'
 
 imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 
-NeoComplCacheEnable
+" NeoComplCacheEnable is not working sometimes, so instead:
+let g:neocomplcache_enable_at_startup = 1
 
 "============= cscope/ctags =============
 

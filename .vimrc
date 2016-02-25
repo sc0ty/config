@@ -241,6 +241,14 @@ let NERDTreeMapActivateNode	= '<Right>'
 let NERDTreeMapCloseDir		= '<Left>'
 let NERDTreeMapUpdir		= '<Left>'
 
+"============== errormaker ==============
+
+let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
+let errormarker_errortextgroup = "ErrorMsg"
+let errormarker_warningtextgroup = "WarningMsg"
+let errormarker_errorgroup = ""
+let errormarker_warninggroup = ""
+
 "============== Swap Files ==============
 
 set noswapfile 		" suppress creation of swap files

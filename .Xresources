@@ -55,7 +55,8 @@ xterm*scrollTtyOutput: false
 xterm*scrollKey: true
 
 ! pretty icon
-xterm*activeIcon: true
+xterm*activeIcon: false
+xterm*iconHint: xterm-color
 
 ! scroll with mouse in alternate mode
 xterm*alternateScroll: true

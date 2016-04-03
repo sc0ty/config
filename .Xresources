@@ -1,12 +1,12 @@
 ! Use a nice truetype font and size by default... 
-xterm*faceName: DejaVu Sans Mono Book
+XTerm*faceName: DejaVu Sans Mono Book
 !xterm*faceSize: 9
-xterm*faceSize1: 6
-xterm*faceSize2: 7
-xterm*faceSize3: 8
-xterm*faceSize4: 10
-xterm*faceSize5: 12
-xterm*faceSize6: 16
+XTerm*faceSize1: 6
+XTerm*faceSize2: 7
+XTerm*faceSize3: 8
+XTerm*faceSize4: 10
+XTerm*faceSize5: 12
+XTerm*faceSize6: 16
 
 ! Anitaliasing in XFT
 Xft.antialias: true
@@ -15,64 +15,64 @@ Xft.hintstyle: hintfull
 Xft.rgba:      rgb
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
-xterm*loginshell: true
+XTerm*loginshell: true
 
 ! I like a LOT of scrollback...
-xterm*saveLines: 100000
+XTerm*saveLines: 100000
 
 ! Bigger window
 XTerm.VT100.geometry: 146x44
 
 ! colors
-xterm*termName: xterm-256color
-xterm*foreground: rgb:FD/F6/E3
-xterm*background: rgb:00/00/00
+XTerm*termName: xterm-256color
+XTerm*foreground: rgb:FD/F6/E3
+XTerm*background: rgb:00/00/00
 light*background: rgb:00/2B/36
-xterm*cursorColor: rgb:93/A1/A1
-xterm*color0: rgb:00/00/00
-xterm*color1: rgb:CC/00/00
-xterm*color2: rgb:4E/9A/06
-xterm*color3: rgb:C4/A0/00
-xterm*color4: rgb:03/3c/86
-xterm*color5: rgb:75/50/7B
-xterm*color6: rgb:06/98/9A
-xterm*color7: rgb:D3/D7/CF
-xterm*color8: rgb:55/57/53
-xterm*color9: rgb:EF/29/29
-xterm*color10: rgb:8A/E2/34
-xterm*color11: rgb:FC/E9/4F
-xterm*color12: rgb:72/9F/CF
-xterm*color13: rgb:AD/7F/A8
-xterm*color14: rgb:34/E2/E2
-xterm*color15: rgb:EE/EE/EE
+XTerm*cursorColor: rgb:93/A1/A1
+XTerm*color0: rgb:00/00/00
+XTerm*color1: rgb:CC/00/00
+XTerm*color2: rgb:4E/9A/06
+XTerm*color3: rgb:C4/A0/00
+XTerm*color4: rgb:03/3c/86
+XTerm*color5: rgb:75/50/7B
+XTerm*color6: rgb:06/98/9A
+XTerm*color7: rgb:D3/D7/CF
+XTerm*color8: rgb:55/57/53
+XTerm*color9: rgb:EF/29/29
+XTerm*color10: rgb:8A/E2/34
+XTerm*color11: rgb:FC/E9/4F
+XTerm*color12: rgb:72/9F/CF
+XTerm*color13: rgb:AD/7F/A8
+XTerm*color14: rgb:34/E2/E2
+XTerm*color15: rgb:EE/EE/EE
 
 ! right hand side scrollbar...
-xterm*rightScrollBar: true
-xterm*ScrollBar: true
+XTerm*rightScrollBar: true
+XTerm*ScrollBar: true
 
 ! prevent output from jumping down to bottom of scroll again, scroll with any key
-xterm*scrollTtyOutput: false
-xterm*scrollKey: true
+XTerm*scrollTtyOutput: false
+XTerm*scrollKey: true
 
 ! pretty icon
-xterm*activeIcon: false
-xterm*iconHint: xterm-color
+XTerm*activeIcon: false
+XTerm*iconHint: xterm-color
 
 ! scroll with mouse in alternate mode
-xterm*alternateScroll: true
-xterm*multiScroll: true
+XTerm*alternateScroll: true
+XTerm*multiScroll: true
 
 ! working alt key
-xterm*metaSendsEscape: true
+XTerm*metaSendsEscape: true
 
 ! needed for xterm
-xterm*allowWindowOps: true
-xterm*allowTitleOps: true
-xterm*allowFontOps: true
+XTerm*allowWindowOps: true
+XTerm*allowTitleOps: true
+XTerm*allowFontOps: true
 
 ! bell config
-xterm*visualBell: true
-xterm*bellIsUrgent: true
+XTerm*visualBell: true
+XTerm*bellIsUrgent: true
 
 ! history in less with ctrl+/
 XTerm.*.printerCommand: xterm -T History -e 'less -irM +G <&3' 3<&0

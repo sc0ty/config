@@ -78,5 +78,8 @@ XTerm*bellIsUrgent: true
 XTerm.*.printerCommand: xterm -T History -e 'less -irM +G <&3' 3<&0
 XTerm.*.translations: #override Ctrl <Key>slash: print-everything(colorAttrs)
 
+! Super_L emit Ctrl + F1 - it is mapped as second prefix in tmux
+! XTerm.VT100.translations: #override <Key>Super_L: string(\033[1;5P)
+
 #include ".Xresources_local"
 

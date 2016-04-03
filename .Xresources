@@ -21,7 +21,7 @@ xterm*loginshell: true
 xterm*saveLines: 100000
 
 ! Bigger window
-xterm*geometry: 146x44+0+0
+XTerm.VT100.geometry: 146x44
 
 ! colors
 xterm*termName: xterm-256color

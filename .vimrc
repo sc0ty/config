@@ -30,6 +30,7 @@ nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F7> :buffers<CR>:buffer<SPACE>
 map <F9> :make!<CR>
 map <C-F9> :make clean<CR>
+map <S-F9> :make clean<CR>
 
 " build tags with Ctrl-F12
 map <F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q '--exclude=*.vim' --exclude=tags '--exclude=*.htm' '--exclude=*.html' .<CR>

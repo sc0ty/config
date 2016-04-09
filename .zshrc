@@ -250,15 +250,6 @@ else
 	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(echo $history[$HISTCMD] |sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 fi
 
-function newt() {
-	if [ -n "$XEMBED" ]; then
-		TITLE= xterm -into $XEMBED &
-	else
-		TITLE= xterm &
-	fi
-	disown
-}
-
 
 ### Terminal title setup ###
 function title() {

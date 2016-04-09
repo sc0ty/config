@@ -104,6 +104,9 @@ else
   bindkey "\e[3~" delete-char
 fi
 
+# Ctrl+Delete deletes word
+bindkey '^[[3;5~' kill-word
+
 # Edit the current command line in $EDITOR
 autoload -U edit-command-line
 zle -N edit-command-line

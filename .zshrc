@@ -173,7 +173,7 @@ if [ "$color_prompt" = yes ]; then
 	UserNameColor="%{$fg_bold[green]%}"
 	HostNameColor="%{$fg_bold[green]%}"
 	PathColor="%{$fg_bold[magenta]%}"
-	AppColor="%{$fg[cyan]%}"
+	JobsColor="%{$fg[cyan]%}"
 
 	if [ -n "$REMOTE" ]; then
 		HostNameColor="%{$fg_bold[yellow]%}"
@@ -188,11 +188,11 @@ else
 	UserNameColor=
 	HostNameColor=
 	PathColor=
-	AppColor=
+	JobsColor=
 fi
 
 # command prompt
-PS1="%(1j.${AppColor}[%j]${ColorOff}.)${UserNameColor}%n${ColorOff}@${HostNameColor}%M${ColorOff}:${PathColor}%~${ColorOff} %#"
+PS1="%(1j.${JobsColor}[%j]${ColorOff}.)${UserNameColor}%n${ColorOff}@${HostNameColor}%M${ColorOff}:${PathColor}%~${ColorOff} %#"
 RPROMPT=""
 
 # colorful man pages

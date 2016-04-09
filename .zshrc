@@ -139,6 +139,9 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
+# ^O starts mc
+bindkey -s '^O' 'mc -x\n'
+
 
 ### Correct mistyped command ###
 

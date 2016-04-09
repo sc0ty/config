@@ -38,11 +38,11 @@ map <F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q '--exclu
 " disabling of the yellow search highlighting (the :noh command)
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-" Move cursor to desired viewport with alt + left|right|up|down
-nnoremap <A-Left>	<C-W>h<CR>
-nnoremap <A-Right>	<C-W>l<CR>
-nnoremap <A-Up>  	<C-W>k<CR>
-nnoremap <A-Down>	<C-W>j<CR>
+" Move cursor to desired viewport with Ctrl + arrows
+nnoremap <C-Left>	<C-W>h
+nnoremap <C-Right>	<C-W>l
+nnoremap <C-Up>  	<C-W>k
+nnoremap <C-Down>	<C-W>j
 
 " Move tabs with alt + shift + left|right
 nnoremap <silent> <A-S-Left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>

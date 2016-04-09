@@ -158,17 +158,6 @@ else
 	PNAME=$(ps -p $PPID -o comm=)
 fi
 
-if [[ "$PNAME" == "mc" ]] ; then
-	TITLE="${TITLE}[mc]"
-elif [[ "$PNAME" == "vim" ]] ; then
-	TITLE="${TITLE}[vim]"
-#elif [[ "$PNAME" == "tmux" ]] || [[ -n "$TMUX" ]] ; then
-#	TITLE=""
-#elif [[ "$PNAME" == "screen" ]] || [[ -n "$STY" ]] ; then
-#	TITLE=""
-fi
-export TITLE
-
 
 ### Colors ###
 
@@ -206,7 +195,7 @@ else
 fi
 
 # command prompt
-PS1="${AppColor}${TITLE}${ColorOff}${UserNameColor}%n${ColorOff}@${HostNameColor}%M${ColorOff}:${PathColor}%~${ColorOff} %#"
+PS1="%(1j.${AppColor}[%j]${ColorOff}.)${UserNameColor}%n${ColorOff}@${HostNameColor}%M${ColorOff}:${PathColor}%~${ColorOff} %#"
 RPROMPT=""
 
 # colorful man pages
@@ -276,26 +265,10 @@ function title() {
 	print -Pn "\e]2;$@\a"
 }
 function set_title_command() {
-	if [[ -n "$TITLE" ]]; then
-		tit="$TITLE "
-	fi
-
-	if [[ "$1" == "mc" ]] || [[ "$1" == mc\ * ]]; then
-		title "[mc] $PWD"
-	elif [[ "$1" == "fg" ]]; then
-        title "${tit}${jobtexts[%+]}"
-    elif [[ "$1" == fg\ * ]]; then
-        title "${tit}${jobtexts[${1#fg }]}"
-    else
-		title "${tit}$1"
-    fi
+	title "$1"
 }
 function set_title_pwd() {
-	if [ -z "$TITLE" ]; then
-		title "[zsh] $PWD"
-	else
-		title "$TITLE $PWD"
-	fi
+	title "[zsh] $PWD"
 }
 precmd_functions=($precmd_functions set_title_pwd)
 preexec_functions=($preexec_functions set_title_command)

@@ -38,18 +38,6 @@ else
 	PNAME=$(ps -p $PPID -o comm=)
 fi
 
-if [ "$PNAME" == "mc" ] ; then
-	TITLE="${TITLE}[mc]"
-elif [ "$PNAME" == "vim" ] ; then
-	TITLE="${TITLE}[vim]"
-elif [ "$PNAME" == "tmux" ] || [ -n "$TMUX" ] ; then
-	TITLE=""
-elif [ "$PNAME" == "screen" ] || [ -n "$STY" ] ; then
-	TITLE=""
-fi
-
-export TITLE
-
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$REMOTEHOST" ]; then
 	export REMOTE=1
 fi
@@ -116,7 +104,7 @@ if [ "$color_prompt" = yes ]; then
 	UserNameColor=$BGreen
 	HostNameColor=$BGreen
 	PathColor=$BPurple
-	AppColor=$Cyan
+	JobsColor=$Cyan
 
 	if [ -n "$REMOTE" ]; then
 		HostNameColor=$BYellow
@@ -129,26 +117,18 @@ if [ "$color_prompt" = yes ]; then
 fi
 
 # command prompt
-PS1="${AppColor}${TITLE}${ColorOff}${UserNameColor}\u${ColorOff}@${HostNameColor}\h${ColorOff}:${PathColor}\w${ColorOff} \$"
+PROMPT_COMMAND='hasjobs=$(jobs -p)'
+PS1="${JobsColor}[\j]${ColorOff}${UserNameColor}\u${ColorOff}@${HostNameColor}\h${ColorOff}:${PathColor}\w${ColorOff} \$"
+
+# xterm title
+PS1="\[\e]0;[bash] \w\a\]$PS1"
 
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -185,11 +165,6 @@ else
 	alias xterm2="xtermcontrol --bg=#002b36"
 	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 fi
-
-function newt() {
-	TITLE= xterm &
-	disown
-}
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

@@ -97,9 +97,9 @@ set cul		" highlight cursor line
 set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 "
 " highlight column past 80
-if exists('+colorcolumn')
-	execute "set colorcolumn=" . join(range(81,299), ',')
-endif
+"if exists('+colorcolumn')
+"	execute "set colorcolumn=" . join(range(81,299), ',')
+"endif
 
 let g:togglecursor_insert = 'underline'
 

@@ -60,10 +60,11 @@ imap <F6> <Esc><F6>
 imap <F7> <Esc><F7>
 imap <F9> <Esc><F9>
 imap <C-F9> <Esc><C-F9>
-imap <A-Left>	<Esc><A-Left>
-imap <A-Right>	<Esc><A-Right>
-imap <A-Up>  	<Esc><A-Up>
-imap <A-Down>	<Esc><A-Down>
+imap <S-F9> <Esc><S-F9>
+imap <C-Left>	<Esc><C-Left>
+imap <C-Right>	<Esc><C-Right>
+imap <C-Up>  	<Esc><C-Up>
+imap <C-Down>	<Esc><C-Down>
 
 set clipboard=unnamed
 

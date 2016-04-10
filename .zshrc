@@ -155,12 +155,16 @@ else
 	PNAME=$(ps -p $PPID -o comm=)
 fi
 
-
-### Colors ###
+if [[ "$PNAME" == "mc" ]] ; then
+	TITLE="${TITLE}[mc]"
+fi
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$REMOTEHOST" ]; then
 	export REMOTE=1
 fi
+
+
+### Colors ###
 
 # enable colors
 eval "`dircolors -b`"
@@ -173,7 +177,8 @@ if [ "$color_prompt" = yes ]; then
 	UserNameColor="%{$fg_bold[green]%}"
 	HostNameColor="%{$fg_bold[green]%}"
 	PathColor="%{$fg_bold[magenta]%}"
-	JobsColor="%{$fg[cyan]%}"
+	TitleColor="%{$fg[cyan]%}"
+	JobsColor="%{$fg_bold[red]%}"
 
 	if [ -n "$REMOTE" ]; then
 		HostNameColor="%{$fg_bold[yellow]%}"
@@ -192,7 +197,7 @@ else
 fi
 
 # command prompt
-PS1="%(1j.${JobsColor}[%j]${ColorOff}.)${UserNameColor}%n${ColorOff}@${HostNameColor}%M${ColorOff}:${PathColor}%~${ColorOff} %#"
+PS1="${TitleColor}${TITLE}${JobsColor}%(1j.[%j].)${UserNameColor}%n${ColorOff}@${HostNameColor}%M${ColorOff}:${PathColor}%~${ColorOff} %#"
 RPROMPT=""
 
 # colorful man pages

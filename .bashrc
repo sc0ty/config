@@ -38,6 +38,14 @@ else
 	PNAME=$(ps -p $PPID -o comm=)
 fi
 
+if [ -z "$TITLE" ] ; then
+	TITLE="[bash]"
+fi
+
+if [ "$PNAME" == "mc" ] ; then
+	TITLE="${TITLE}[mc]"
+fi
+
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$REMOTEHOST" ]; then
 	export REMOTE=1
 fi
@@ -104,7 +112,8 @@ if [ "$color_prompt" = yes ]; then
 	UserNameColor=$BGreen
 	HostNameColor=$BGreen
 	PathColor=$BPurple
-	JobsColor=$Cyan
+	TitleColor=$Cyan
+	JobsColor=$BRed
 
 	if [ -n "$REMOTE" ]; then
 		HostNameColor=$BYellow
@@ -118,7 +127,8 @@ fi
 
 # command prompt
 PROMPT_COMMAND='hasjobs=$(jobs -p)'
-PS1="${JobsColor}[\j]${ColorOff}${UserNameColor}\u${ColorOff}@${HostNameColor}\h${ColorOff}:${PathColor}\w${ColorOff} \$"
+PS1='${hasjobs:+[\j]}\$ '
+PS1="${TitleColor}${TITLE}${JobsColor}"'${hasjobs:+[\j]}'"${UserNameColor}\u${ColorOff}@${HostNameColor}\h${ColorOff}:${PathColor}\w${ColorOff} \$"
 
 # xterm title
 PS1="\[\e]0;[bash] \w\a\]$PS1"

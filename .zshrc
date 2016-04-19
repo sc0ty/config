@@ -304,7 +304,7 @@ zstyle ':completion:*:default' menu 'select=0'
 zstyle ':completion:*' file-sort modification reverse
 
 # color code completion!!!!  Wohoo!
-zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
+zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=39=34"
 
 # Separate man page sections.  Neat.
 zstyle ':completion:*:manuals' separate-sections true

@@ -89,6 +89,9 @@ set hidden
 " Automatically save before commands like :next and :make
 set autowrite
 
+" switch to already opened buffer or open in new tab (for :cl, :cc etc.)
+set switchbuf=usetab,newtab
+
 "============ Saving and Closing ============
 
 " changing file types:

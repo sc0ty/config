@@ -38,10 +38,6 @@ else
 	PNAME=$(ps -p $PPID -o comm=)
 fi
 
-if [ -z "$TITLE" ] ; then
-	TITLE="[bash]"
-fi
-
 if [ "$PNAME" == "mc" ] ; then
 	TITLE="${TITLE}[mc]"
 fi

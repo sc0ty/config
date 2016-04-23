@@ -35,6 +35,13 @@ map <S-F9> :make clean<CR>
 " build tags with Ctrl-F12
 map <F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q '--exclude=*.vim' --exclude=tags '--exclude=*.htm' '--exclude=*.html' .<CR>
 
+" switch tabs with Ctrl-j/k,
+map <C-j> :tabp<CR>
+map <C-k> :tabn<CR>
+
+" new tab with Ctrl-h
+map <C-h> :tabe<CR>
+
 " normally <C-l> clears and redraws the screen, but here we're adding the
 " disabling of the yellow search highlighting (the :noh command)
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
@@ -66,6 +73,9 @@ imap <C-Left>	<Esc><C-Left>
 imap <C-Right>	<Esc><C-Right>
 imap <C-Up>  	<Esc><C-Up>
 imap <C-Down>	<Esc><C-Down>
+imap <C-j> <Esc><C-j>
+imap <C-k> <Esc><C-k>
+imap <C-h> <Esc><C-h>
 
 set clipboard=unnamed
 
@@ -78,6 +88,9 @@ set hidden
 
 " Automatically save before commands like :next and :make
 set autowrite
+
+" switch to already opened buffer or open in new tab (for :cl, :cc etc.)
+set switchbuf=usetab,newtab
 
 "============ Saving and Closing ============
 

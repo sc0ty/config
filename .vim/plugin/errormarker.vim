@@ -96,6 +96,8 @@ execute "sign define errormarker_warning text=" . g:errormarker_warningtext .
             \ " texthl=" . g:errormarker_warningtextgroup .
             \ s:warningicon
 
+let s:placedsigns = []
+
 " Setup the autocommands that handle the MRUList and other stuff.
 augroup errormarker
     autocmd QuickFixCmdPost make call <SID>SetErrorMarkers()
@@ -121,7 +123,10 @@ function! s:SetErrorMarkers()
         set ballooneval
     endif
 
-    sign unplace *
+	for l:key in s:placedsigns
+		execute ":sign unplace " . l:key
+	endfor
+	let s:placedsigns = []
 
     let l:positions = {}
     for l:d in getqflist()
@@ -134,6 +139,7 @@ function! s:SetErrorMarkers()
             continue
         endif
         let l:positions[l:key] = 1
+        call insert(s:placedsigns, l:key)
 
         if strlen(l:d.type) &&
                     \ stridx(g:errormarker_warningtypes, l:d.type) >= 0

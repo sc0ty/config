@@ -256,13 +256,15 @@ let NERDTreeMapActivateNode	= '<Right>'
 let NERDTreeMapCloseDir		= '<Left>'
 let NERDTreeMapUpdir		= '<Left>'
 
-"============== errormaker ==============
+"=============== markers ================
 
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 let errormarker_errortextgroup = "ErrorMsg"
 let errormarker_warningtextgroup = "WarningMsg"
 let errormarker_errorgroup = ""
 let errormarker_warninggroup = ""
+
+let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 "============== Swap Files ==============
 
@@ -283,6 +285,9 @@ highlight clear
 set background=dark
 let g:badwolf_tabline=3
 colorscheme badwolf2
+
+hi ShowMarksHLl ctermfg=yellow     cterm=bold guifg=yellow gui=bold
+hi ShowMarksHLu ctermfg=darkyellow cterm=bold guifg=darkyellow gui=bold
 
 
 " screen keys correction

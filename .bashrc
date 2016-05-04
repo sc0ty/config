@@ -145,6 +145,7 @@ alias q="exit"
 alias loop="while [ 1 ] ; do "
 alias mc="mc -x"
 alias l="ls -lh"
+alias h="history | grep --color"
 
 if [ -n "$CYGWIN" ]; then
 	alias pwdc="pwd > /dev/clipboard"

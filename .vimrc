@@ -27,7 +27,7 @@ nnoremap <F3> :tabp<CR>
 nnoremap <F4> :tabn<CR>
 nnoremap <F6> :tabe<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
-nnoremap <F7> :buffers<CR>:
+nnoremap <F7> :buffers<CR>:b
 map <F9> :make!<CR>
 map <C-F9> :make clean<CR>
 map <S-F9> :make clean<CR>

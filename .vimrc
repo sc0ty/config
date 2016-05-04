@@ -265,6 +265,9 @@ let errormarker_errorgroup = ""
 let errormarker_warninggroup = ""
 
 let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+let g:showmarks_textlower="\t "
+let g:showmarks_textupper="\t "
+let g:showmarks_textother="\t "
 
 "============== Swap Files ==============
 

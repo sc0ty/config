@@ -103,11 +103,12 @@ found, and can be completely disabled by >
 ==============================================================================
 3. CREDITS                                               *errormarker-credits*
 
-Author: Michael Hofmann <mh21 at piware dot de>
+Author: Michael Hofmann <mh21 at mh21 dot de>
 
 ==============================================================================
 4. CHANGELOG                                           *errormarker-changelog*
 
+0.2.1   - only remove own signs (thanks Mike Szymaniak)
 0.2     - redraw (thanks yoppi, kano4)
         - ship icons, sign highlight (thanks andersonfreitas)
         - ship docs separately, moved to github (thanks mbertheau)

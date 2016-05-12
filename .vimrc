@@ -170,6 +170,9 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
 
+au BufRead,BufNewFile *.bb* set filetype=make		" bitbake
+au BufRead,BufNewFile *.md set filetype=markdown	" github readmes
+
 set autoindent 		" always indent
 set copyindent 		" copy previous indent on autoindenting
 set smartindent

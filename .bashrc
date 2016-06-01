@@ -146,6 +146,7 @@ alias loop="while [ 1 ] ; do "
 alias mc="mc -x"
 alias l="ls -lh"
 alias h="history | grep --color"
+alias bell="printf '\a'"
 
 if [ -n "$CYGWIN" ]; then
 	alias pwdc="pwd > /dev/clipboard"
@@ -170,7 +171,7 @@ else
 
 	alias xterm1="xtermcontrol --bg=#000000"
 	alias xterm2="xtermcontrol --bg=#002b36"
-	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" || printf "\a"'
 fi
 
 # enable programmable completion features (you don't need to enable

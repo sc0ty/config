@@ -270,7 +270,14 @@ function title() {
 	print -Pn "\e]2;$@\a"
 }
 function set_title_command() {
-	title "$1"
+	local -a cmd
+	cmd=(${(z)1})
+
+	case $cmd[1] in
+		fg)	cmd="${(z)jobtexts[${(Q)cmd[2]:-%+}]}" ;;
+		%*)	cmd="${(z)jobtexts[${(Q)cmd[1]:-%+}]}" ;;
+	esac
+	title $cmd
 }
 function set_title_pwd() {
 	title "[zsh] $PWD"

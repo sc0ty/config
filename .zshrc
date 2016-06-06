@@ -265,6 +265,19 @@ else
 	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(echo $history[$HISTCMD] |sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" || printf "\a"'
 fi
 
+function up() {
+	if [ -z "$1" ]; then
+		cd ..
+	elif [ ! -z "${1##*[!0-9]*}" ]; then
+		cd "$PWD$(printf '/..%.0s' {1..$1})"
+	else
+		local -a destdir
+		local -a tmp
+		destdir="${PWD%/$**}/"
+		tmp="${PWD/$destdir/}"
+		cd "$destdir${tmp%%/*}"
+	fi
+}
 
 ### Terminal title setup ###
 function title() {
@@ -353,6 +366,11 @@ _force_rehash() {
   (( CURRENT == 1 )) && rehash
   return 1  # Because we didn't really complete anything
 }
+
+# Configure remembering recent directories
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':completion:*:*:cdr:*:*' menu selection
 
 export PATH="${PATH}:${HOME}/bin"
 

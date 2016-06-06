@@ -174,6 +174,24 @@ else
 	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" || printf "\a"'
 fi
 
+function up() {
+	if [ "$PWD" != "/" ]; then
+		if [ -z "$1" ]; then
+			cd ..
+		elif [ ! -z "${1##*[!0-9]*}" ]; then
+			local -a tmp
+			tmp=$(printf "%${1}s")
+			cd "$PWD${tmp// /\/..}"
+		else
+			local -a destdir
+			local -a tmp
+			destdir="${PWD%/$**}/"
+			tmp="${PWD/$destdir/}"
+			cd "$destdir${tmp%%/*}"
+		fi
+	fi
+}
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

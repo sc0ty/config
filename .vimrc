@@ -2,6 +2,27 @@
 " https://github.com/maciakl/.vim
 " https://github.com/proteansec/dotfiles-vim/blob/master/.vimrc
 
+"============= Vundle ==============
+
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+
+" === Plugins ===
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'moll/vim-bbye'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bogado/file-line'
+Plugin 'jszakmeister/vim-togglecursor'
+Plugin 'mh21/errormarker.vim'
+Plugin 'airblade/vim-gitgutter'
+call vundle#end()
+
+filetype plugin indent on
+
 "============= Mouse ==============
 "
 " Enable mouse usage (all modes) in terminals
@@ -23,8 +44,8 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-nnoremap <F3> :tabp<CR>
-nnoremap <F4> :tabn<CR>
+nnoremap <F3> :YcmCompleter GoToDefinition<CR>
+nnoremap <F4> :YcmCompleter GoToDeclaration<CR>
 nnoremap <F6> :tabe<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F7> :buffers<CR>:b
@@ -115,6 +136,7 @@ set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 "	execute "set colorcolumn=" . join(range(81,299), ',')
 "endif
 
+let g:togglecursor_default = 'block'
 let g:togglecursor_insert = 'underline'
 
 "============= Scrolling & Position Tweaks =============
@@ -213,34 +235,6 @@ set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*.obj,*~
 " longer more descriptive auto-complete prompts
 set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
-
-" OmniCppComplete
-let OmniCpp_SelectFirstItem= 2
-
-let OmniCpp_NamespaceSearch = 2
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowScopeInAbbr = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-"let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-"let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
-
-" OmniComplete after CTRL+SPACE
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-    
-let g:SuperTabMappingTabLiteral = '<tab>'
-let g:SuperTabMappingForward = '<c-space>'
-let g:SuperTabMappingBackward = '<s-c-space>'
-
-imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
-
-" NeoComplCacheEnable is not working sometimes, so instead:
-let g:neocomplcache_enable_at_startup = 1
 
 "============= cscope/ctags =============
 

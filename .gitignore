@@ -2,4 +2,5 @@ backup/
 tags
 .vim/bundle/*
 !.vim/bundle/Vundle.vim
+*.pyc
 

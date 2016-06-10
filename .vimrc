@@ -12,7 +12,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'moll/vim-bbye'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bogado/file-line'
@@ -236,6 +236,14 @@ set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*.obj,*~
 set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
 
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_goto_buffer_command = 'new-or-existing-tab'
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_conf/fallback_extra_conf.py'
+let g:ycm_extra_conf_vim_data = ['&filetype']
+let g:ycm_error_symbol = 'E '
+let g:ycm_warning_symbol = 'W '
+
+
 "============= cscope/ctags =============
 
 set cscopetag
@@ -281,6 +289,9 @@ colorscheme badwolf2
 
 hi ShowMarksHLl ctermfg=yellow     cterm=bold guifg=yellow gui=bold
 hi ShowMarksHLu ctermfg=darkyellow cterm=bold guifg=darkyellow gui=bold
+
+hi link YcmErrorSign ErrorMsg
+hi link YcmWarningSign WarningMsg
 
 
 " screen keys correction

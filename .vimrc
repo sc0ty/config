@@ -93,7 +93,6 @@ imap <C-Up>  	<Esc><C-Up>
 imap <C-Down>	<Esc><C-Down>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
-imap <C-h> <Esc><C-h>
 
 set clipboard=unnamed
 
@@ -195,8 +194,6 @@ au BufRead,BufNewFile *.md set filetype=markdown	" github readmes
 set autoindent 		" always indent
 set copyindent 		" copy previous indent on autoindenting
 set smartindent
-
-set backspace=indent,eol,start 	" backspace over everything in insert mode
 
 " ============== Status Line and title ==============
 

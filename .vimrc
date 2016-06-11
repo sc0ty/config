@@ -60,9 +60,6 @@ map <F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q '--exclu
 map <C-j> :tabp<CR>
 map <C-k> :tabn<CR>
 
-" new tab with Ctrl-h
-map <C-h> :tabe<CR>
-
 " normally <C-l> clears and redraws the screen, but here we're adding the
 " disabling of the yellow search highlighting (the :noh command)
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>

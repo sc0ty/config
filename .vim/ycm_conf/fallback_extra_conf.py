@@ -2,15 +2,11 @@ import sys
 
 ftopts = {
   'cpp': [
-    '-Wall',
-    '-Wextra',
     '-x', 'c++',
-    '-std=c++11',
+    '-std=gnu++11',
   ],
   'c': [
-    '-Wall',
-    '-Wextra',
-    '-std=c99',
+    '-std=gnu99',
     '-x', 'c',
     '-I', '.',
   ],

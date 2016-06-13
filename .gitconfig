@@ -1,0 +1,26 @@
+[color]
+	ui = true
+[core]
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	autocrlf = false
+[alias]
+	st = status
+	co = checkout
+	ci = commit -v
+	cia = commit -v -a
+	cp = cherry-pick
+	br = branch
+	bva = branch -va
+	ss = show --stat
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	gr = log --graph --full-history --all --color --pretty=tformat:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an,%x20%ar)%x1b[0m\"
+	lc  = log origin/master..HEAD --color --pretty=tformat:\"%Cred%h%Creset%x09%s%  %Cgreen(%an, %ar)%Creset\"
+	d = difftool
+	find = "!git log --color -p -S "
+	diff-added = diff --cached
+[merge]
+	tool = meld
+[push]
+	default = simple
+[include]
+	path = ~/.gitconfig_local

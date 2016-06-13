@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CONF_LINUX=(.vim .vimrc .bashrc .zshrc .tmux.conf)
+CONF_LINUX=(.vim .vimrc .bashrc .zshrc .tmux.conf .gitconfig)
 CONF_XTERM=(.Xresources)
 
 CONF_CYGWIN=(.minttyrc)

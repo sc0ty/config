@@ -12,13 +12,15 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'moll/vim-bbye'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bogado/file-line'
 Plugin 'jszakmeister/vim-togglecursor'
 Plugin 'mh21/errormarker.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 
 filetype plugin indent on
@@ -48,17 +50,19 @@ nnoremap <F3> :YcmCompleter GoToDefinition<CR>
 nnoremap <F4> :YcmCompleter GoToDeclaration<CR>
 nnoremap <F6> :tabe<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <F6> :CtrlPBuffer<CR>
 nnoremap <F7> :buffers<CR>:b
-map <F9> :make!<CR>
-map <C-F9> :make clean<CR>
-map <S-F9> :make clean<CR>
+nnoremap <F9> :make!<CR>
+nnoremap <C-F9> :make clean<CR>
+nnoremap <S-F9> :make clean<CR>
 
 " build tags with Ctrl-F12
-map <F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q '--exclude=*.vim' --exclude=tags '--exclude=*.htm' '--exclude=*.html' .<CR>
+nnoremap <F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q '--exclude=*.vim' --exclude=tags '--exclude=*.htm' '--exclude=*.html' .<CR>
 
-" switch tabs with Ctrl-j/k,
-map <C-j> :tabp<CR>
-map <C-k> :tabn<CR>
+" buffers binding
+nnoremap <leader>t :enew<CR>
+nnoremap <C-j> :bprevious<CR>
+nnoremap <C-k> :bnext<CR>
 
 " normally <C-l> clears and redraws the screen, but here we're adding the
 " disabling of the yellow search highlighting (the :noh command)
@@ -105,9 +109,6 @@ set hidden
 
 " Automatically save before commands like :next and :make
 set autowrite
-
-" switch to already opened buffer or open in new tab (for :cl, :cc etc.)
-set switchbuf=usetab,newtab
 
 "============ Saving and Closing ============
 
@@ -212,6 +213,12 @@ set statusline+=%-14.(%l/%L,%c%)\ %<%P        " offset
 
 set titlestring=[vim]\ %f
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
 "============== Folding ==============
 
 set nofoldenable 	" screw folding
@@ -231,7 +238,6 @@ set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
 
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_goto_buffer_command = 'new-or-existing-tab'
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_conf/fallback_extra_conf.py'
 let g:ycm_extra_conf_vim_data = ['&filetype']
 let g:ycm_error_symbol = 'E '
@@ -286,6 +292,8 @@ hi ShowMarksHLu ctermfg=darkyellow cterm=bold guifg=darkyellow gui=bold
 
 hi link YcmErrorSign ErrorMsg
 hi link YcmWarningSign WarningMsg
+
+let g:airline_theme = 'cool'
 
 
 " screen keys correction

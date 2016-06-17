@@ -257,8 +257,9 @@ set ofu=syntaxcomplete#Complete
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_conf/fallback_extra_conf.py'
 let g:ycm_extra_conf_vim_data = ['&filetype']
-let g:ycm_error_symbol = 'E '
-let g:ycm_warning_symbol = 'W '
+let g:ycm_error_symbol = '~E'
+let g:ycm_warning_symbol = '~W'
+let g:ycm_enable_diagnostic_highlighting = 0
 
 
 "============= cscope/ctags =============

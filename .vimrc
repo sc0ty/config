@@ -13,7 +13,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'moll/vim-bbye'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bogado/file-line'
@@ -311,7 +310,7 @@ hi ShowMarksHLu ctermfg=darkyellow cterm=bold guifg=darkyellow gui=bold
 hi link YcmErrorSign ErrorMsg
 hi link YcmWarningSign WarningMsg
 
-let g:airline_theme = 'cool'
+let g:airline_theme = 'cooler'
 
 
 " screen keys correction

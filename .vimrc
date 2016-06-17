@@ -78,7 +78,7 @@ nnoremap <C-Down>	<C-W>j
 nnoremap <silent> <A-S-Left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
-if exists('$TMUX') 
+if exists('$TMUX')
 nnoremap K :!tmux split-window -h man <cword><CR><CR>
 endif
 
@@ -228,6 +228,13 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
+
+if exists('$TMUX')
+	"set t_ts=k
+	"set t_fs=\
+	autocmd BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
+	autocmd VimLeave * call system("tmux setw automatic-rename")
+endif
 
 "============== Folding ==============
 

@@ -228,10 +228,19 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
+
+function BufferFileName()
+	if expand("%:t") == ""
+		return "vim"
+	else
+		return expand("%:t")
+	endif
+endfunction
+
 if exists('$TMUX')
 	"set t_ts=k
 	"set t_fs=\
-	autocmd BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
+	autocmd BufEnter * call system("tmux rename-window '" . BufferFileName() . "'")
 	autocmd VimLeave * call system("tmux setw automatic-rename")
 endif
 

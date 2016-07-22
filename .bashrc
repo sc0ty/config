@@ -107,7 +107,9 @@ PS1='${hasjobs:+[\j]}\$ '
 PS1="${TitleColor}${TITLE}${JobsColor}"'${hasjobs:+[\j]}'"${UserNameColor}\u${ColorOff}@${HostNameColor}\h${ColorOff}:${PathColor}\w${ColorOff} \$"
 
 # xterm title
-PS1="\[\e]0;[bash] \w\a\]$PS1"
+case "$TERM" in
+	xterm*|screen*|tmux*) PS1="\[\e]0;[bash] \w\a\]$PS1" ;;
+esac
 
 unset color_prompt force_color_prompt
 

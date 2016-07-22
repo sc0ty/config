@@ -281,7 +281,9 @@ function up() {
 
 ### Terminal title setup ###
 function title() {
-	print -Pn "\e]2;$@\a"
+	case "$TERM" in
+		xterm*|screen*|tmux*)	print -Pn "\e]0;$@\a" ;;
+	esac
 }
 function set_title_command() {
 	local -a cmd

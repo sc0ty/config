@@ -275,6 +275,10 @@ let NERDTreeMapActivateNode	= '<Right>'
 let NERDTreeMapCloseDir		= '<Left>'
 let NERDTreeMapUpdir		= '<Left>'
 
+"================ CtrlP =================
+"
+let g:ctrlp_working_path_mode = 'a'
+
 "=============== markers ================
 
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat

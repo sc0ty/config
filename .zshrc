@@ -200,16 +200,18 @@ fi
 PS1="${TitleColor}${TITLE}${JobsColor}%(1j.[%j].)${UserNameColor}%n${ColorOff}@${HostNameColor}%M${ColorOff}:${PathColor}%~${ColorOff} %#"
 
 # rprompt - git branch info
-setopt prompt_subst
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr   "%{$fg[yellow]%}[U]"
-zstyle ':vcs_info:*' stagedstr     "%{$fg[green]%}[S]"
-zstyle ':vcs_info:*' formats       "%{$fg_bold[white]%}[%b]%{$reset_color%}%u%c%m${ColorOff}"
-zstyle ':vcs_info:*' actionformats "%{$fg_bold[white]%}[%a|%{$fg_bold[white]%}%b]%{$reset_color%}%u%c${ColorOff}"
-zstyle ':vcs_info:*' enable ALL
-precmd () { vcs_info }
-RPROMPT='${vcs_info_msg_0_}'
+if [[ "$PNAME" != "mc" ]] ; then
+	setopt prompt_subst
+	autoload -Uz vcs_info
+	zstyle ':vcs_info:*' check-for-changes true
+	zstyle ':vcs_info:*' unstagedstr   "%{$fg[yellow]%}[U]"
+	zstyle ':vcs_info:*' stagedstr     "%{$fg[green]%}[S]"
+	zstyle ':vcs_info:*' formats       "%{$fg_bold[white]%}[%b]%{$reset_color%}%u%c%m${ColorOff}"
+	zstyle ':vcs_info:*' actionformats "%{$fg_bold[white]%}[%a|%{$fg_bold[white]%}%b]%{$reset_color%}%u%c${ColorOff}"
+	zstyle ':vcs_info:*' enable ALL
+	precmd () { vcs_info }
+	RPROMPT='${vcs_info_msg_0_}'
+fi
 
 # colorful man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'

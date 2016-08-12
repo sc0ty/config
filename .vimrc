@@ -21,6 +21,8 @@ Plugin 'mh21/errormarker.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'mxw/vim-jsx'
 call vundle#end()
 
 filetype plugin indent on
@@ -40,6 +42,7 @@ end
 
 " press ; to issue commands in normal mode (no more shift holding)
 nnoremap ; :
+nnoremap , ;
 
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>
@@ -190,7 +193,10 @@ filetype plugin on
 filetype plugin indent on
 
 au BufRead,BufNewFile *.bb* set filetype=make		" bitbake
-au BufRead,BufNewFile *.md set filetype=markdown	" github readmes
+au BufRead,BufNewFile *.md  set filetype=markdown	" github readmes
+au BufRead,BufNewFile *.jsx set filetype=typescript.jsx
+
+"let g:jsx_ext_required = 0
 
 set autoindent 		" always indent
 set copyindent 		" copy previous indent on autoindenting
@@ -244,7 +250,7 @@ set nofoldenable 	" screw folding
 
 set wildmenu
 set wildmode=list:longest
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*.obj,*~
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*.obj,*~,*/node_modules/*,*/.git/*
 
 " longer more descriptive auto-complete prompts
 set completeopt=longest,menuone

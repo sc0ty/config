@@ -42,7 +42,10 @@ end
 
 " press ; to issue commands in normal mode (no more shift holding)
 nnoremap ; :
+
+" press ',' and shift+',' to repeat last f/t forward and backward
 nnoremap , ;
+nnoremap < ,
 
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>

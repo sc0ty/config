@@ -2,9 +2,14 @@
 " https://github.com/maciakl/.vim
 " https://github.com/proteansec/dotfiles-vim/blob/master/.vimrc
 
-"============= Vundle ==============
+"========= General settings ========
 
 set nocompatible
+set ttyfast
+
+
+"============= Vundle ==============
+
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -172,6 +177,7 @@ set smartcase		" Do smart case matching
 
 set incsearch		" incremental search
 set hlsearch		" highlights searches
+set gdefault		" search with /g flag default on
 
 set noerrorbells 	" suppress audible bell
 set novisualbell 	" suppress bell blink

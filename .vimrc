@@ -99,6 +99,11 @@ nnoremap <S-Down> :cnext<CR>
 nnoremap <S-Right> :cwindow<CR>
 nnoremap <S-Left> :cclose<CR>
 
+nnoremap <C-S-Left> <C-w>v
+nnoremap <C-S-Right> <C-w>v<C-w>l
+nnoremap <C-S-Up> <C-w>s
+nnoremap <C-S-Down> <C-w>s<C-w>k
+
 if exists('$TMUX')
 nnoremap K :!tmux split-window -h man <cword><CR><CR>
 endif
@@ -118,6 +123,10 @@ imap <C-Up>  	<Esc><C-Up>
 imap <C-Down>	<Esc><C-Down>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
+imap <C-S-Left> <Esc><C-S-Left>
+imap <C-S-Right> <Esc><C-S-Right>
+imap <C-S-Up> <Esc><C-S-Up>
+imap <C-S-Down> <Esc><C-S-Down>
 
 set clipboard=unnamed
 

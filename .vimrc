@@ -93,6 +93,12 @@ nnoremap <silent> <A-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 nnoremap <leader>gg :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
 nnoremap <leader>gi :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
 
+" navigate quickfix window with shift + arrows
+nnoremap <S-Up> :cprev<CR>
+nnoremap <S-Down> :cnext<CR>
+nnoremap <S-Right> :cwindow<CR>
+nnoremap <S-Left> :cclose<CR>
+
 if exists('$TMUX')
 nnoremap K :!tmux split-window -h man <cword><CR><CR>
 endif

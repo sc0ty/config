@@ -89,6 +89,10 @@ nnoremap <C-Down>	<C-W>j
 nnoremap <silent> <A-S-Left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
+" grep with \g... commands
+nnoremap <leader>gg :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
+nnoremap <leader>gi :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
+
 if exists('$TMUX')
 nnoremap K :!tmux split-window -h man <cword><CR><CR>
 endif

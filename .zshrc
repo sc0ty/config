@@ -281,6 +281,15 @@ function up() {
 	fi
 }
 
+function pingt() {
+	while true; do
+		ping -c1 $@ > /dev/null && break
+		echo -n $?
+		sleep 1
+	done
+	echo $?
+}
+
 ### Terminal title setup ###
 function title() {
 	case "$TERM" in

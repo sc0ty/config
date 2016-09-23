@@ -174,6 +174,15 @@ function up() {
 	fi
 }
 
+function pingt() {
+	while true; do
+		ping -c1 $@ > /dev/null && break
+		echo -n $?
+		sleep 1
+	done
+	echo $?
+}
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

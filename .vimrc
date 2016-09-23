@@ -28,6 +28,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'sjl/gundo.vim'
 call vundle#end()
 
 filetype plugin indent on

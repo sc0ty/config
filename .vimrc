@@ -80,11 +80,15 @@ nnoremap <C-k> :tabn<CR>
 " disabling of the yellow search highlighting (the :noh command)
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-" Move cursor to desired viewport with Ctrl + arrows
+" Move cursor to desired viewport with Ctrl + arrows and Alt + arrows
 nnoremap <C-Left>	<C-W>h
 nnoremap <C-Right>	<C-W>l
 nnoremap <C-Up>  	<C-W>k
 nnoremap <C-Down>	<C-W>j
+nnoremap <M-Left>	<C-W>h
+nnoremap <M-Right>	<C-W>l
+nnoremap <M-Up>  	<C-W>k
+nnoremap <M-Down>	<C-W>j
 
 " Move tabs with alt + shift + left|right
 nnoremap <silent> <A-S-Left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
@@ -122,6 +126,10 @@ imap <C-Left>	<Esc><C-Left>
 imap <C-Right>	<Esc><C-Right>
 imap <C-Up>  	<Esc><C-Up>
 imap <C-Down>	<Esc><C-Down>
+imap <M-Left>	<Esc><M-Left>
+imap <M-Right>	<Esc><M-Right>
+imap <M-Up>  	<Esc><M-Up>
+imap <M-Down>	<Esc><M-Down>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
 imap <C-S-Left> <Esc><C-S-Left>

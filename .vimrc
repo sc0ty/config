@@ -39,12 +39,12 @@ filetype plugin indent on
 set mouse=ni
 set mousemodel=popup
 if has("mouse_sgr")
-    set ttymouse=sgr
+	set ttymouse=sgr
 else
-    set ttymouse=xterm2
+	set ttymouse=xterm2
 end
 
-"============= Key Mappings ============= 
+"============= Key Mappings =============
 
 " press ; to issue commands in normal mode (no more shift holding)
 nnoremap ; :
@@ -83,11 +83,11 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " Move cursor to desired viewport with Ctrl + arrows and Alt + arrows
 nnoremap <C-Left>	<C-W>h
 nnoremap <C-Right>	<C-W>l
-nnoremap <C-Up>  	<C-W>k
+nnoremap <C-Up>		<C-W>k
 nnoremap <C-Down>	<C-W>j
 nnoremap <M-Left>	<C-W>h
 nnoremap <M-Right>	<C-W>l
-nnoremap <M-Up>  	<C-W>k
+nnoremap <M-Up>		<C-W>k
 nnoremap <M-Down>	<C-W>j
 
 " Move tabs with alt + shift + left|right
@@ -110,7 +110,7 @@ nnoremap <C-S-Up> <C-w>s
 nnoremap <C-S-Down> <C-w>s<C-w>k
 
 if exists('$TMUX')
-nnoremap K :!tmux split-window -h man <cword><CR><CR>
+	nnoremap K :!tmux split-window -h man <cword><CR><CR>
 endif
 
 " Mappings in insert mode
@@ -124,11 +124,11 @@ imap <C-F9> <Esc><C-F9>
 imap <S-F9> <Esc><S-F9>
 imap <C-Left>	<Esc><C-Left>
 imap <C-Right>	<Esc><C-Right>
-imap <C-Up>  	<Esc><C-Up>
+imap <C-Up>		<Esc><C-Up>
 imap <C-Down>	<Esc><C-Down>
 imap <M-Left>	<Esc><M-Left>
 imap <M-Right>	<Esc><M-Right>
-imap <M-Up>  	<Esc><M-Up>
+imap <M-Up>		<Esc><M-Up>
 imap <M-Down>	<Esc><M-Down>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
@@ -152,19 +152,19 @@ set autowrite
 "============ Saving and Closing ============
 
 " changing file types:
-command! DOS set ff=dos 	" force windows style line endings
-command! UNIX set ff=unix 	" force unix style line endings
-command! MAC set ff=mac 	" force mac style line endings
+command! DOS set ff=dos		" force windows style line endings
+command! UNIX set ff=unix	" force unix style line endings
+command! MAC set ff=mac		" force mac style line endings
 
 "============= Spell Check =============
 
-"set spell 		"enable in-line spell check
+"set spell		"enable in-line spell check
 "set spelllang=en
 
 "============= Line Numbers and Cursor =============
 
 set nu		" absolute line numbers
-set cul		" highlight cursor line 
+set cul		" highlight cursor line
 set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 "
 " highlight column past 80
@@ -187,14 +187,16 @@ set lbr
 
 " use hard tabs for indentation
 set tabstop=4
-set softtabstop=4 	" makes backspace treat 4 spaces like a tab
+set softtabstop=4	" makes backspace treat 4 spaces like a tab
 set shiftwidth=4    " makes indents 4 spaces wide as well
-"set expandtab 		" actually, expand tabs into spaces
-set noexpandtab 	" don't expand tabs to spaces (cause fuck that)
+"set expandtab		" actually, expand tabs into spaces
+set noexpandtab		" don't expand tabs to spaces (cause fuck that)
 
 set backspace=indent,eol,start
 
 set listchars=tab:>-,trail:~,extends:>,precedes:<
+
+set virtualedit=block
 
 "============= Search & Matching =============
 
@@ -207,8 +209,8 @@ set incsearch		" incremental search
 set hlsearch		" highlights searches
 set gdefault		" search with /g flag default on
 
-set noerrorbells 	" suppress audible bell
-set novisualbell 	" suppress bell blink
+set noerrorbells	" suppress audible bell
+set novisualbell	" suppress bell blink
 
 "============= History =============
 
@@ -235,13 +237,13 @@ au BufRead,BufNewFile *.jsx set filetype=typescript.jsx
 
 "let g:jsx_ext_required = 0
 
-set autoindent 		" always indent
-set copyindent 		" copy previous indent on autoindenting
+set autoindent		" always indent
+set copyindent		" copy previous indent on autoindenting
 set smartindent
 
 " ============== Status Line and title ==============
 
-set ls=2 			" Always show status line
+set ls=2			" Always show status line
 set laststatus=2
 
 set statusline=								 " clear the statusline for when vimrc is reloaded
@@ -277,7 +279,7 @@ endif
 
 "============== Folding ==============
 
-set nofoldenable 	" screw folding
+set nofoldenable	" screw folding
 
 "set foldmethod=indent
 "set foldnestmax=3
@@ -337,9 +339,9 @@ let g:showmarks_textother="\t "
 
 "============== Swap Files ==============
 
-set noswapfile 		" suppress creation of swap files
-set nobackup 		" suppress creation of backup files
-set nowb 			" suppress creation of ~ files
+set noswapfile		" suppress creation of swap files
+set nobackup		" suppress creation of backup files
+set nowb			" suppress creation of ~ files
 
 "============== Colors =================
 
@@ -359,11 +361,11 @@ let g:airline_theme = 'cooler'
 
 " screen keys correction
 if &term =~ '^screen' || &term =~ '^st'
-    " tmux will send xterm-style keys when its xterm-keys option is on
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-    execute "set <F9>=\e[20;*~"
+	" tmux will send xterm-style keys when its xterm-keys option is on
+	execute "set <xUp>=\e[1;*A"
+	execute "set <xDown>=\e[1;*B"
+	execute "set <xRight>=\e[1;*C"
+	execute "set <xLeft>=\e[1;*D"
+	execute "set <F9>=\e[20;*~"
 endif
 

@@ -334,11 +334,6 @@ let errormarker_warningtextgroup = "WarningMsg"
 let errormarker_errorgroup = ""
 let errormarker_warninggroup = ""
 
-let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-let g:showmarks_textlower="\t "
-let g:showmarks_textupper="\t "
-let g:showmarks_textother="\t "
-
 "============== Swap Files ==============
 
 set noswapfile		" suppress creation of swap files
@@ -351,9 +346,6 @@ highlight clear
 set background=dark
 let g:badwolf_tabline=3
 colorscheme badwolf2
-
-hi ShowMarksHLl ctermfg=yellow     cterm=bold guifg=yellow gui=bold
-hi ShowMarksHLu ctermfg=darkyellow cterm=bold guifg=darkyellow gui=bold
 
 hi link YcmErrorSign ErrorMsg
 hi link YcmWarningSign WarningMsg

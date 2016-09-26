@@ -109,6 +109,8 @@ nnoremap <C-S-Right> <C-w>v<C-w>l
 nnoremap <C-S-Up> <C-w>s
 nnoremap <C-S-Down> <C-w>s<C-w>k
 
+nnoremap <leader>u :GundoToggle<CR>
+
 if exists('$TMUX')
 	nnoremap K :!tmux split-window -h man <cword><CR><CR>
 endif

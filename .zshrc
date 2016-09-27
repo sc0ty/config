@@ -276,6 +276,22 @@ function pingt() {
 	echo $?
 }
 
+### Graphic file manager ###
+function cd_prev() {
+	popd > /dev/null
+	zle reset-prompt
+}
+
+function cd_up() {
+	pushd .. > /dev/null
+	zle reset-prompt
+}
+
+zle -N cd_prev
+zle -N cd_up
+bindkey '^[[1;3A' cd_prev	# alt + up
+bindkey '^[[1;3D' cd_up		# alt + left
+
 ### Terminal title setup ###
 function title() {
 	case "$TERM" in

@@ -264,19 +264,25 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
 
-function! BufferFileName()
-	if expand("%:t") == ""
-		return "vim"
-	else
-		return expand("%:t")
-	endif
+function! SetTmuxWindowName()
+	set t_IS=k
+	set t_IE=\
+	set iconstring=%f
 endfunction
 
+function! ResetTmuxWindowName()
+	set t_IS=
+	set t_IE=
+	set iconstring=vim
+	silent call system("tmux setw automatic-rename")
+endfunction
+
+" show buffer file name as tmux window name
 if exists('$TMUX')
-	"set t_ts=k
-	"set t_fs=\
-	autocmd BufEnter * call system("tmux rename-window '" . BufferFileName() . "'")
-	autocmd VimLeave * call system("tmux setw automatic-rename")
+	call SetTmuxWindowName()
+	set icon
+	autocmd VimLeave * call ResetTmuxWindowName()
+	nnoremap <silent> <C-z> :call ResetTmuxWindowName()<CR><C-z>:call SetTmuxWindowName()<CR>
 endif
 
 "============== Folding ==============

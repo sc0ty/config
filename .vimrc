@@ -267,7 +267,7 @@ let g:airline_right_sep = ''
 function! SetTmuxWindowName()
 	set t_IS=k
 	set t_IE=\
-	set iconstring=%f
+	set iconstring=%t
 endfunction
 
 function! ResetTmuxWindowName()

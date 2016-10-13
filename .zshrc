@@ -289,8 +289,8 @@ function cd_up() {
 
 zle -N cd_prev
 zle -N cd_up
-bindkey '^[[1;3A' cd_prev	# alt + up
-bindkey '^[[1;3D' cd_up		# alt + left
+bindkey '^[[1;2A' cd_prev	# shift + up
+bindkey '^[[1;2D' cd_up		# shift + left
 
 ### Terminal title setup ###
 function title() {

@@ -95,19 +95,19 @@ nnoremap <silent> <A-S-Left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " grep with \g... commands
-nnoremap <leader>gg :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
-nnoremap <leader>gi :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
+nnoremap <leader>gg :execute "grep! -R "  . shellescape(expand("<cword>")) . " ."<cr>:botright :copen<cr>
+nnoremap <leader>gi :execute "grep! -Ri " . shellescape(expand("<cword>")) . " ."<cr>:botright :copen<cr>
 
-" navigate quickfix window with shift + arrows
-nnoremap <S-Up> :cprev<CR>
-nnoremap <S-Down> :cnext<CR>
-nnoremap <S-Right> :cwindow<CR>
-nnoremap <S-Left> :cclose<CR>
+" navigate quickfix/preview window
+nnoremap <S-Up>     :botright :cwindow<CR>:cprev<CR>
+nnoremap <S-Down>   :botright :cwindow<CR>:cnext<CR>
+nnoremap <leader>w  :botright :cwindow<CR>
+nnoremap <leader>q  :cclose<CR>:pclose<CR>
 
-nnoremap <C-S-Left> <C-w>v
-nnoremap <C-S-Right> <C-w>v<C-w>l
-nnoremap <C-S-Up> <C-w>s
-nnoremap <C-S-Down> <C-w>s<C-w>k
+nnoremap <C-S-Left>		<C-w>v<C-w>h
+nnoremap <C-S-Right>	<C-w>v
+nnoremap <C-S-Up>	    <C-w>s<C-w>k
+nnoremap <C-S-Down>		<C-w>s
 
 nnoremap <leader>u :GundoToggle<CR>
 
@@ -150,6 +150,11 @@ set hidden
 
 " Automatically save before commands like :next and :make
 set autowrite
+
+" sane position of new windows after split
+set splitbelow
+set splitright
+"botright
 
 "============ Saving and Closing ============
 

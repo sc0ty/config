@@ -95,8 +95,8 @@ nnoremap <silent> <A-S-Left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " grep with \g... commands
-nnoremap <leader>gg :execute "grep! -R "  . shellescape(expand("<cword>")) . " ."<cr>:botright :copen<cr>
-nnoremap <leader>gi :execute "grep! -Ri " . shellescape(expand("<cword>")) . " ."<cr>:botright :copen<cr>
+nnoremap <leader>gg :execute "grep! -RI "  . shellescape(expand("<cword>")) . " ."<cr>:botright :copen<cr>
+nnoremap <leader>gi :execute "grep! -RIi " . shellescape(expand("<cword>")) . " ."<cr>:botright :copen<cr>
 
 " navigate quickfix/preview window
 nnoremap <S-Up>     :botright :cwindow<CR>:cprev<CR>

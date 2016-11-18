@@ -483,7 +483,7 @@ call s:HL('gitDiff', 'lightgravel', '',)
 call s:HL('diffRemoved', 'dress', '',)
 call s:HL('diffAdded', 'lime', '',)
 call s:HL('diffFile', 'taffy', '', 'bold')
-call s:HL('diffNewFile', 'lime', '', 'bold')
+call s:HL('diffNewFile', 'taffy', '', 'bold')
 
 call s:HL('diffLine', 'orange', '', 'bold')
 call s:HL('diffSubname', 'orange', '', 'none')

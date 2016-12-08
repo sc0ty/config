@@ -277,20 +277,45 @@ function pingt() {
 }
 
 ### Graphic file manager ###
+set -A _NEXT_PATHS
+set -A _DOWN_PATHS
+
 function cd_prev() {
-	popd > /dev/null
+	_NEXT_PATHS+="$PWD"
+	popd -q
 	zle reset-prompt
+}
+
+function cd_next() {
+	if [ "$#_NEXT_PATHS" -gt "0" ]; then
+		pushd -q $_NEXT_PATHS[-1]
+		zle reset-prompt
+		_NEXT_PATHS[-1]=()
+	fi
 }
 
 function cd_up() {
-	pushd .. > /dev/null
+	_DOWN_PATHS+="$PWD"
+	pushd -q ..
 	zle reset-prompt
 }
 
+function cd_down() {
+	if [ "$#_DOWN_PATHS" -gt "0" ]; then
+		pushd -q $_DOWN_PATHS[-1]
+		zle reset-prompt
+		_DOWN_PATHS[-1]=()
+	fi
+}
+
 zle -N cd_prev
+zle -N cd_next
 zle -N cd_up
+zle -N cd_down
 bindkey '^[[1;2A' cd_prev	# shift + up
+bindkey '^[[1;2B' cd_next	# shift + down
 bindkey '^[[1;2D' cd_up		# shift + left
+bindkey '^[[1;2C' cd_down	# shift + right
 
 ### Terminal title setup ###
 function title() {

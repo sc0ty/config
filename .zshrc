@@ -276,6 +276,25 @@ function pingt() {
 	echo $?
 }
 
+
+### Tmux aliases ###
+
+function tat() {
+	if [ -z "$1" ]; then
+		tmux list-sessions | grep -vq '(attached)'
+		if [ "$?" -eq "0" ]; then
+			tmux attach-session
+		else
+			tmux new-session
+		fi
+	else
+		tmux new-session -As $@
+	fi
+}
+
+alias tls="tmux list-sessions"
+
+
 ### Graphic file manager ###
 set -A _NEXT_PATHS
 set -A _DOWN_PATHS

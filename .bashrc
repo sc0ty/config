@@ -183,6 +183,25 @@ function pingt() {
 	echo $?
 }
 
+
+### Tmux aliases ###
+
+function tat() {
+	if [ -z "$1" ]; then
+		tmux list-sessions | grep -vq '(attached)'
+		if [ "$?" -eq "0" ]; then
+			tmux attach-session
+		else
+			tmux new-session
+		fi
+	else
+		tmux new-session -As $@
+	fi
+}
+
+alias tls="tmux list-sessions"
+
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

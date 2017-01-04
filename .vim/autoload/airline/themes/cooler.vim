@@ -10,7 +10,7 @@ if has("gui_running") || &t_Co >= 256
 	" INSERT & REPLACE
 	let s:I1 = s:N1
 	let s:I2 = [ '#E4E4E4' , '#AF2800' , 188 , 124 ]
-	let s:I3 = [ '#EEEEEE' , '#872800' , 231 , 88  ]
+	let s:I3 = [ '#EEEEEE' , '#870000' , 231 , 88  ]
 
 	" VISUAL
 	let s:V1 = s:N1

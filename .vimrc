@@ -111,6 +111,8 @@ nnoremap <C-S-Down>		<C-w>s
 
 nnoremap <leader>u :GundoToggle<CR>
 
+nnoremap <leader>pj :%!python -m json.tool<CR>:setf json<CR>
+
 if exists('$TMUX')
 	nnoremap K :!tmux split-window -h man <cword><CR><CR>
 endif

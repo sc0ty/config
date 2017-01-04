@@ -11,6 +11,7 @@ BACKDIR ?= backup
 SOURCES = \
 		  .vim \
 		  .vimrc \
+		  .gvimrc \
 		  .bashrc \
 		  .zshrc \
 		  .tmux.conf \

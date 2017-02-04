@@ -223,5 +223,7 @@ if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
 fi
 
+command -v direnv 2>&1 > /dev/null && eval "$(direnv hook bash)"
+
 export WWW_HOME='http://google.pl'
 

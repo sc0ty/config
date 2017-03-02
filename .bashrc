@@ -128,6 +128,7 @@ alias loop="while [ 1 ] ; do "
 alias mc="mc -x"
 alias l="ls -lh"
 alias h="history | grep --color"
+alias psg="pgrep -a"
 alias bell="printf '\a'"
 
 if [ -n "$CYGWIN" ]; then

@@ -347,6 +347,11 @@ let errormarker_warningtextgroup = "WarningMsg"
 let errormarker_errorgroup = ""
 let errormarker_warninggroup = ""
 
+"============== Gitgutter ===============
+
+" async glitches with airline
+let g:gitgutter_async = 0
+
 "============== Swap Files ==============
 
 set noswapfile		" suppress creation of swap files

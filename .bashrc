@@ -184,6 +184,12 @@ function pingt() {
 	echo $?
 }
 
+function predate() {
+	while read line; do
+		echo "$(date +%d-%T.%3N): $line"
+	done
+}
+
 
 ### Tmux aliases ###
 

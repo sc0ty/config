@@ -369,6 +369,9 @@ hi link YcmErrorSign ErrorMsg
 hi link YcmWarningSign WarningMsg
 
 let g:airline_theme = 'cooler'
+if !has("gui_running")
+	let g:airline_symbols_ascii = 1
+endif
 
 
 " screen keys correction

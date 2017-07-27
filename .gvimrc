@@ -12,7 +12,12 @@ map <S-Insert>	"*gP
 imap <S-Insert>	<C-R>*
 cmap <S-Insert>	<C-R>*
 
+map  <C-Z>	:shell<CR>
+imap <C-Z>	<Esc>:shell<CR>
+
+
 " Cursor
 set guicursor=a:block-Cursor
 set guicursor+=i:hor10
-set guicursor+=a:blinkwait0
+set guicursor+=a:blinkwait10
+

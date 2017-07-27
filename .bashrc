@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+	*i*) ;;
+	*) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -46,20 +46,24 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$REMOTEHOST" ]; then
 	export REMOTE=1
 fi
 
-# enable colors
-eval "`dircolors -b`"
+colors_no=$(tput colors)
+color_prompt=$force_color_prompt
+if [ "$colors_no" -ge 8 ]; then
+	color_prompt=yes
+fi
 
-# colorful man pages
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m' # end the info box
-export LESS_TERMCAP_so=$'\E[01;42;30m' # begin the info box
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-
-color_prompt=yes
 if [ "$color_prompt" = yes ]; then
+	# enable colors
+	eval "`dircolors -b`"
+
+	# colorful man pages
+	export LESS_TERMCAP_mb=$'\E[01;31m'
+	export LESS_TERMCAP_md=$'\E[01;31m'
+	export LESS_TERMCAP_me=$'\E[0m'
+	export LESS_TERMCAP_se=$'\E[0m' # end the info box
+	export LESS_TERMCAP_so=$'\E[01;42;30m' # begin the info box
+	export LESS_TERMCAP_ue=$'\E[0m'
+	export LESS_TERMCAP_us=$'\E[01;32m'
 
 	# ANSI-COLOR-CODES
 	ColorOff="\[\033[0m\]"
@@ -99,6 +103,18 @@ if [ "$color_prompt" = yes ]; then
 	if [ "$(id -u)" == "0" ]; then
 		UserNameColor=$BRed
 	fi
+
+	# Colored aliases
+	alias ls='ls --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+else
+	ColorOff=
+	UserNameColor=
+	HostNameColor=
+	PathColor=
+	JobsColor=
 fi
 
 # command prompt
@@ -111,16 +127,7 @@ case "$TERM" in
 	xterm*|screen*|tmux*) PS1="\[\e]0;[bash] \w\a\]$PS1" ;;
 esac
 
-unset color_prompt force_color_prompt
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+unset color_prompt force_color_prompt colors_no
 
 # alias definitions
 alias q="exit"
@@ -213,11 +220,11 @@ alias tls="tmux list-sessions"
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+	if [ -f /usr/share/bash-completion/bash_completion ]; then
+		. /usr/share/bash-completion/bash_completion
+	elif [ -f /etc/bash_completion ]; then
+		. /etc/bash_completion
+	fi
 fi
 
 export PATH="${PATH}:${HOME}/bin"
@@ -227,10 +234,8 @@ export EDITOR=vim
 
 # local .bashrc script (for local PATH's, etc)
 if [ -f ~/.bashrc_local ]; then
-    . ~/.bashrc_local
+	. ~/.bashrc_local
 fi
 
-command -v direnv 2>&1 > /dev/null && eval "$(direnv hook bash)"
-
-export WWW_HOME='http://google.pl'
+unset ColorOff UserNameColor HostNameColor PathColor JobsColor
 

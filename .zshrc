@@ -33,11 +33,10 @@ setopt AUTO_PUSHD
 
 
 ### Modules ###
-autoload -U compinit promptinit zcalc zsh-mime-setup colors select-word-style
+autoload -U compinit promptinit zcalc zsh-mime-setup select-word-style
 compinit
 promptinit
 zsh-mime-setup
-colors
 select-word-style bash	# ^W words delimiter will be slashes, dots etc, not only whitespaces
 zmodload zsh/parameter
 zmodload zsh/complist
@@ -126,12 +125,6 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 
-### Correct mistyped command ###
-
-# setopt correct
-export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
-
-
 ### Parent shell name ###
 
 # track names of programs running shell
@@ -152,11 +145,27 @@ fi
 
 ### Colors ###
 
-# enable colors
-eval "`dircolors -b`"
+colors_no=$(tput colors)
+color_prompt=$force_color_prompt
+if [ "$colors_no" -ge 8 ]; then
+	color_prompt=yes
+fi
 
-color_prompt=yes
 if [ "$color_prompt" = yes ]; then
+
+	# enable colors
+	autoload -U colors
+	colors
+	eval "`dircolors -b`"
+
+	# colorful man pages
+	export LESS_TERMCAP_mb=$'\E[01;31m'
+	export LESS_TERMCAP_md=$'\E[01;31m'
+	export LESS_TERMCAP_me=$'\E[0m'
+	export LESS_TERMCAP_se=$'\E[0m'			# end the info box
+	export LESS_TERMCAP_so=$'\E[0;43;30m'	# begin the info box
+	export LESS_TERMCAP_ue=$'\E[0m'
+	export LESS_TERMCAP_us=$'\E[01;32m'
 
 	# Command prompt colors
 	ColorOff="%{$reset_color%}"
@@ -165,6 +174,12 @@ if [ "$color_prompt" = yes ]; then
 	PathColor="%{$fg_bold[magenta]%}"
 	TitleColor="%{$fg[cyan]%}"
 	JobsColor="%{$fg_bold[red]%}"
+	GitColor="%{$fg_bold[white]%}"
+	GitUnstageColor="%{$fg[yellow]%}"
+	GitStageColor="%{$fg[green]%}"
+	CorrectFromColor="%{$fg_bold[red]%}"
+	CorrectToColor="%{$fg_bold[green]%}"
+	SelectGroupColor="%{$bg[blue]%}"
 
 	if [ -n "$REMOTE" ]; then
 		HostNameColor="%{$fg_bold[yellow]%}"
@@ -174,12 +189,26 @@ if [ "$color_prompt" = yes ]; then
 	if [[ "$(id -u)" == "0" ]]; then
 		UserNameColor="%{$fg_bold[red]%}"
 	fi
+
+	# Colored aliases
+	alias ls='ls --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+
 else
+	unset zle_bracketed_paste
 	ColorOff=
 	UserNameColor=
 	HostNameColor=
 	PathColor=
 	JobsColor=
+	GitColor=
+	GitUnstageColor=
+	GitStageColor=
+	CorrectFromColor=
+	CorrectToColor=
+	SelectGroupColor=
 fi
 
 # command prompt
@@ -190,34 +219,21 @@ if [[ "$PNAME" != "mc" ]] ; then
 	setopt prompt_subst
 	autoload -Uz vcs_info
 	zstyle ':vcs_info:*' check-for-changes true
-	zstyle ':vcs_info:*' unstagedstr   "%{$fg[yellow]%}[U]"
-	zstyle ':vcs_info:*' stagedstr     "%{$fg[green]%}[S]"
-	zstyle ':vcs_info:*' formats       "%{$fg_bold[white]%}[%b]%{$reset_color%}%u%c%m${ColorOff}"
-	zstyle ':vcs_info:*' actionformats "%{$fg_bold[white]%}[%a|%{$fg_bold[white]%}%b]%{$reset_color%}%u%c${ColorOff}"
+	zstyle ':vcs_info:*' unstagedstr   "${GitUnstageColor}[U]${ColorOff}"
+	zstyle ':vcs_info:*' stagedstr     "${GitStageColor}[S]${ColorOff}"
+	zstyle ':vcs_info:*' formats       "${GitColor}[%b]${ColorOff}%u%c%m"
+	zstyle ':vcs_info:*' actionformats "${GitColor}[%a|%b]${ColorOff}%u%c"
 	zstyle ':vcs_info:*' enable ALL
 	precmd () { vcs_info }
 	RPROMPT='${vcs_info_msg_0_}'
 fi
 
-# colorful man pages
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'			# end the info box
-export LESS_TERMCAP_so=$'\E[0;43;30m'	# begin the info box
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
+### Correct mistyped command ###
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
-fi
+setopt correct
+export SPROMPT="Correct ${CorrectFromColor}%R${ColorOff} to ${CorrectToColor}%r${ColorOff}? (Yes, No, Abort, Edit) "
 
-unset color_prompt
+unset color_prompt color_prompt_force colors_no
 
 ### Aliases definitions ###
 alias q="exit"
@@ -384,7 +400,7 @@ zstyle ':completion::complete:*' use-cache 1
 #zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 zstyle ':completion:*' verbose yes
-zstyle ':completion:*:descriptions' format "%{${bg[blue]}%}[%d]%{${reset_color}%}"
+zstyle ':completion:*:descriptions' format "${SelectGroupColor}[%d]${ColorOff}"
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d%b'
 zstyle ':completion:*' group-name ''
@@ -448,7 +464,7 @@ if [ -f ~/.bashrc_local ]; then
 	. ~/.bashrc_local
 fi
 
-command -v direnv 2>&1 > /dev/null && eval "$(direnv hook zsh)"
-
-export WWW_HOME='http://google.pl'
+unset ColorOff UserNameColor HostNameColor PathColor JobsColor
+unset GitColor GitUnstageColor GitStageColor
+unset CorrectFromColor CorrectToColor SelectGroupColor 
 

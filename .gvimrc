@@ -21,3 +21,5 @@ set guicursor=a:block-Cursor
 set guicursor+=i:hor10
 set guicursor+=a:blinkwait10
 
+set titlestring=%f
+

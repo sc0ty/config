@@ -374,9 +374,16 @@ function set_title_command() {
 		%*)	cmd="${(z)jobtexts[${(Q)cmd[1]:-%+}]}" ;;
 	esac
 	title $cmd
+
+	if [ -n "$TMUX" ]; then
+		tmux setw automatic-rename
+	fi
 }
 function set_title_pwd() {
 	title "[zsh] $PWD"
+	if [ -n "$TMUX" ]; then
+		print -Pn "\ek%~\e\\"
+	fi
 }
 precmd_functions=($precmd_functions set_title_pwd)
 preexec_functions=($preexec_functions set_title_command)

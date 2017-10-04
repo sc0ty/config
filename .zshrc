@@ -322,42 +322,34 @@ alias tls="tmux list-sessions"
 set -A _NEXT_PATHS
 set -A _DOWN_PATHS
 
-function cd_prev() {
-	_NEXT_PATHS+="$PWD"
-	popd -q
+cd_prev() {
+	emulate -L zsh
+	setopt nopushdminus
+	builtin pushd -q +1 &>/dev/null || true
 	zle reset-prompt
 }
 
-function cd_next() {
-	if [ "$#_NEXT_PATHS" -gt "0" ]; then
-		pushd -q $_NEXT_PATHS[-1]
-		zle reset-prompt
-		_NEXT_PATHS[-1]=()
-	fi
-}
-
-function cd_up() {
-	_DOWN_PATHS+="$PWD"
-	pushd -q ..
+cd_next() {
+	emulate -L zsh
+	setopt nopushdminus
+	builtin pushd -q -0 &>/dev/null || true
 	zle reset-prompt
 }
 
-function cd_down() {
-	if [ "$#_DOWN_PATHS" -gt "0" ]; then
-		pushd -q $_DOWN_PATHS[-1]
-		zle reset-prompt
-		_DOWN_PATHS[-1]=()
-	fi
+cd_up() {
+	emulate -L zsh
+	setopt nopushdminus
+	builtin pushd -q .. &>/dev/null || true
+	zle reset-prompt
 }
 
 zle -N cd_prev
 zle -N cd_next
 zle -N cd_up
-zle -N cd_down
 bindkey '^[[1;2A' cd_prev	# shift + up
 bindkey '^[[1;2B' cd_next	# shift + down
 bindkey '^[[1;2D' cd_up		# shift + left
-bindkey '^[[1;2C' cd_down	# shift + right
+bindkey '^[[1;2C' cd_prev	# shift + right
 
 ### Terminal title setup ###
 function title() {

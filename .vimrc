@@ -265,31 +265,15 @@ set statusline+=%{&fileformat}]              " file format
 set statusline+=%=                           " right align
 set statusline+=%-14.(%l/%L,%c%)\ %<%P        " offset
 
-set titlestring=[vim]\ %f
-
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
-
-function! SetTmuxWindowName()
-	set t_IS=k
-	set t_IE=\
-	set iconstring=%t
-endfunction
-
-function! ResetTmuxWindowName()
-	set t_IS=
-	set t_IE=
-	set iconstring=vim
-	silent call system("tmux setw automatic-rename")
-endfunction
-
 " show buffer file name as tmux window name
-if exists('$TMUX')
-	call SetTmuxWindowName()
-	set icon
-	autocmd VimLeave * call ResetTmuxWindowName()
-	nnoremap <silent> <C-z> :call ResetTmuxWindowName()<CR><C-z>:call SetTmuxWindowName()<CR>
+if &term =~ '^screen' || &term =~ '^tmux' || &term =~ '^xterm'
+	set t_ts=]2;
+	set t_fs=
+	set titlestring=\ %t
+	set title
 endif
 
 "============== Folding ==============

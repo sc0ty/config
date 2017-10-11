@@ -327,6 +327,7 @@ cd_prev() {
 	setopt nopushdminus
 	builtin pushd -q +1 &>/dev/null || true
 	zle reset-prompt
+	set_title_pwd
 }
 
 cd_next() {
@@ -334,6 +335,7 @@ cd_next() {
 	setopt nopushdminus
 	builtin pushd -q -0 &>/dev/null || true
 	zle reset-prompt
+	set_title_pwd
 }
 
 cd_up() {
@@ -341,6 +343,7 @@ cd_up() {
 	setopt nopushdminus
 	builtin pushd -q .. &>/dev/null || true
 	zle reset-prompt
+	set_title_pwd
 }
 
 zle -N cd_prev

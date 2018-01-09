@@ -10,39 +10,43 @@ set ttyfast
 
 "============= Vundle ==============
 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+if version >= 730
+	filetype off
+	set rtp+=~/.vim/bundle/Vundle.vim
 
-" === Plugins ===
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'moll/vim-bbye'
-Plugin 'kien/ctrlp.vim'
-Plugin 'bogado/file-line'
-Plugin 'jszakmeister/vim-togglecursor'
-Plugin 'mh21/errormarker.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'mxw/vim-jsx'
-Plugin 'sjl/gundo.vim'
-call vundle#end()
+	" === Plugins ===
+	call vundle#begin()
+	Plugin 'VundleVim/Vundle.vim'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'vim-airline/vim-airline'
+	Plugin 'moll/vim-bbye'
+	Plugin 'kien/ctrlp.vim'
+	Plugin 'bogado/file-line'
+	Plugin 'jszakmeister/vim-togglecursor'
+	Plugin 'mh21/errormarker.vim'
+	Plugin 'airblade/vim-gitgutter'
+	Plugin 'tpope/vim-fugitive'
+	Plugin 'Valloric/YouCompleteMe'
+	Plugin 'leafgarland/typescript-vim'
+	Plugin 'mxw/vim-jsx'
+	Plugin 'sjl/gundo.vim'
+	call vundle#end()
 
-filetype plugin indent on
+	filetype plugin indent on
+endif
 
 "============= Mouse ==============
 "
 " Enable mouse usage (all modes) in terminals
-set mouse=ni
-set mousemodel=popup
-if has("mouse_sgr")
-	set ttymouse=sgr
-else
-	set ttymouse=xterm2
-end
+if has("mouse")
+	set mouse=ni
+	set mousemodel=popup
+	if has("mouse_sgr")
+		set ttymouse=sgr
+	else
+		set ttymouse=xterm2
+	end
+endif
 
 "============= Key Mappings =============
 
@@ -161,9 +165,11 @@ set splitright
 "============ Saving and Closing ============
 
 " changing file types:
-command! DOS set ff=dos		" force windows style line endings
-command! UNIX set ff=unix	" force unix style line endings
-command! MAC set ff=mac		" force mac style line endings
+if version >= 500
+	command! DOS set ff=dos		" force windows style line endings
+	command! UNIX set ff=unix	" force unix style line endings
+	command! MAC set ff=mac		" force mac style line endings
+endif
 
 "============= Spell Check =============
 
@@ -181,8 +187,10 @@ set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 "	execute "set colorcolumn=" . join(range(81,299), ',')
 "endif
 
-let g:togglecursor_default = 'block'
-let g:togglecursor_insert = 'underline'
+if version >= 730
+	let g:togglecursor_default = 'block'
+	let g:togglecursor_insert = 'underline'
+endif
 
 "============= Scrolling & Position Tweaks =============
 
@@ -234,15 +242,17 @@ endif
 
 
 "=========== Syntax Highlighting & Indents ==============
-syntax on
-filetype on
-filetype indent on
-filetype plugin on
-filetype plugin indent on
+if version >= 500
+	syntax on
+	filetype on
+	filetype indent on
+	filetype plugin on
+	filetype plugin indent on
 
-au BufRead,BufNewFile *.bb* set filetype=make		" bitbake
-au BufRead,BufNewFile *.md  set filetype=markdown	" github readmes
-au BufRead,BufNewFile *.jsx set filetype=typescript.jsx
+	au BufRead,BufNewFile *.bb* set filetype=make		" bitbake
+	au BufRead,BufNewFile *.md  set filetype=markdown	" github readmes
+	au BufRead,BufNewFile *.jsx set filetype=typescript.jsx
+endif
 
 "let g:jsx_ext_required = 0
 
@@ -265,8 +275,10 @@ set statusline+=%{&fileformat}]              " file format
 set statusline+=%=                           " right align
 set statusline+=%-14.(%l/%L,%c%)\ %<%P        " offset
 
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+if version >= 730
+	let g:airline_left_sep = ''
+	let g:airline_right_sep = ''
+endif
 
 " show buffer file name as tmux window name
 if &term =~ '^screen' || &term =~ '^tmux' || &term =~ '^xterm'
@@ -278,11 +290,13 @@ endif
 
 "============== Folding ==============
 
-set nofoldenable	" screw folding
+if has("folding")
+	set nofoldenable	" screw folding
 
-"set foldmethod=indent
-"set foldnestmax=3
-"set foldenable
+	"set foldmethod=indent
+	"set foldnestmax=3
+	"set foldenable
+endif
 
 "============== Completion ==============
 
@@ -294,12 +308,14 @@ set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*.obj,*~,*/node_modules/*,*/.git/*
 set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
 
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_conf/fallback_extra_conf.py'
-let g:ycm_extra_conf_vim_data = ['&filetype']
-let g:ycm_error_symbol = '~E'
-let g:ycm_warning_symbol = '~W'
-let g:ycm_enable_diagnostic_highlighting = 0
+if version >= 730
+	let g:ycm_autoclose_preview_window_after_completion = 1
+	let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_conf/fallback_extra_conf.py'
+	let g:ycm_extra_conf_vim_data = ['&filetype']
+	let g:ycm_error_symbol = '~E'
+	let g:ycm_warning_symbol = '~W'
+	let g:ycm_enable_diagnostic_highlighting = 0
+endif
 
 
 "============= cscope/ctags =============
@@ -310,31 +326,39 @@ set cscopeverbose
 
 "============== NERDTree ================
 
-let NERDTreeQuitOnOpen = 1
-let NERDTreeDirArrows = 0
+if version >= 730
+	let NERDTreeQuitOnOpen = 1
+	let NERDTreeDirArrows = 0
 
-" lynx-like motion
-let NERDTreeMapPreview		= '<Right>'
-let NERDTreeMapActivateNode	= '<Right>'
-let NERDTreeMapCloseDir		= '<Left>'
-let NERDTreeMapUpdir		= '<Left>'
+	" lynx-like motion
+	let NERDTreeMapPreview		= '<Right>'
+	let NERDTreeMapActivateNode	= '<Right>'
+	let NERDTreeMapCloseDir		= '<Left>'
+	let NERDTreeMapUpdir		= '<Left>'
+endif
 
 "================ CtrlP =================
 "
-let g:ctrlp_working_path_mode = 'a'
+if version >= 730
+	let g:ctrlp_working_path_mode = 'a'
+endif
 
 "=============== markers ================
 
-let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
-let errormarker_errortextgroup = "ErrorMsg"
-let errormarker_warningtextgroup = "WarningMsg"
-let errormarker_errorgroup = ""
-let errormarker_warninggroup = ""
+if version >= 730
+	let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
+	let errormarker_errortextgroup = "ErrorMsg"
+	let errormarker_warningtextgroup = "WarningMsg"
+	let errormarker_errorgroup = ""
+	let errormarker_warninggroup = ""
+endif
 
 "============== Gitgutter ===============
 
-" async glitches with airline
-let g:gitgutter_async = 0
+if version >= 730
+	" async glitches with airline
+	let g:gitgutter_async = 0
+endif
 
 "============== Swap Files ==============
 
@@ -344,17 +368,19 @@ set nowb			" suppress creation of ~ files
 
 "============== Colors =================
 
-highlight clear
-set background=dark
-let g:badwolf_tabline=3
-colorscheme badwolf2
+if version >= 500
+	highlight clear
+	set background=dark
+	let g:badwolf_tabline=3
+	colorscheme badwolf2
 
-hi link YcmErrorSign ErrorMsg
-hi link YcmWarningSign WarningMsg
+	hi link YcmErrorSign ErrorMsg
+	hi link YcmWarningSign WarningMsg
 
-let g:airline_theme = 'cooler'
-if !has("gui_running")
-	let g:airline_symbols_ascii = 1
+	let g:airline_theme = 'cooler'
+	if !has("gui_running")
+		let g:airline_symbols_ascii = 1
+	endif
 endif
 
 

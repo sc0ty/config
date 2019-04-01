@@ -30,6 +30,7 @@ if version >= 730
 	Plugin 'leafgarland/typescript-vim'
 	Plugin 'mxw/vim-jsx'
 	Plugin 'sjl/gundo.vim'
+	Plugin 'justinmk/vim-sneak'
 	call vundle#end()
 
 	filetype plugin indent on

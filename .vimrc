@@ -51,22 +51,19 @@ endif
 
 "============= Key Mappings =============
 
-" press ; to issue commands in normal mode (no more shift holding)
-nnoremap ; :
-
-" press ',' and shift+',' to repeat last f/t forward and backward
-nnoremap , ;
-nnoremap < ,
-
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-nnoremap <F3> :YcmCompleter GoToDefinition<CR>
+nnoremap <F3> :YcmCompleter GoTo<CR>
 nnoremap <F4> :YcmCompleter GoToDeclaration<CR>
-nnoremap <F6> :tabe<CR>
-nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <leader>y :YcmCompleter<Space>
+nnoremap <leader>r :YcmCompleter GoToReferences<CR>
+nnoremap <leader>i :YcmCompleter GetType<CR>
+nnoremap <leader>f :YcmCompleter FixIt<CR>
+
+nnoremap <silent> <expr> <F5> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 nnoremap <F6> :CtrlPBuffer<CR>
 nnoremap <F7> :buffers<CR>:b
 nnoremap <F9> :make!<CR>

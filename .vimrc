@@ -206,6 +206,7 @@ set softtabstop=4	" makes backspace treat 4 spaces like a tab
 set shiftwidth=4    " makes indents 4 spaces wide as well
 "set expandtab		" actually, expand tabs into spaces
 set noexpandtab		" don't expand tabs to spaces (cause fuck that)
+set nofixendofline
 
 set backspace=indent,eol,start
 

@@ -19,6 +19,7 @@ if version >= 730
 	Plugin 'VundleVim/Vundle.vim'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'vim-airline/vim-airline'
+	Plugin 'majutsushi/tagbar'
 	Plugin 'moll/vim-bbye'
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'bogado/file-line'
@@ -66,6 +67,7 @@ nnoremap <leader>f :YcmCompleter FixIt<CR>
 nnoremap <silent> <expr> <F5> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 nnoremap <F6> :CtrlPBuffer<CR>
 nnoremap <F7> :buffers<CR>:b
+nnoremap <F8> :TagbarToggle<CR>
 nnoremap <F9> :make!<CR>
 nnoremap <C-F9> :make clean<CR>
 nnoremap <S-F9> :make clean<CR>
@@ -358,6 +360,22 @@ if version >= 730
 	" async glitches with airline
 	let g:gitgutter_async = 0
 endif
+
+"================ tagbar ================
+
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+\ }
 
 "============== Swap Files ==============
 

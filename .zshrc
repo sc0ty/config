@@ -131,7 +131,7 @@ bindkey '^Z' fancy-ctrl-z
 if [[ -n "$CYGWIN" ]] ; then
 	PNAME=$(basename "$(ps -p $PPID)")
 else
-	PNAME=$(ps -p $PPID -o comm=)
+	PNAME=$(basename "$(ps -p $PPID -o comm=)")
 fi
 
 if [[ "$PNAME" == "mc" ]] ; then

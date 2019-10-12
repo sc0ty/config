@@ -54,7 +54,9 @@ fi
 
 if [ "$color_prompt" = yes ]; then
 	# enable colors
-	eval "`dircolors -b`"
+	if [[ "$OSTYPE" == "linux-gnu" ]]; then
+		eval "`dircolors -b`"
+	fi
 
 	# colorful man pages
 	export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -105,10 +107,16 @@ if [ "$color_prompt" = yes ]; then
 	fi
 
 	# Colored aliases
-	alias ls='ls --color=auto'
+	if [[ "$OSTYPE" == "darwin"* ]]; then
+		export CLICOLOR=1
+	else
+		alias ls='ls --color=auto'
+	fi
+
 	alias grep='grep --color=auto'
 	alias fgrep='fgrep --color=auto'
 	alias egrep='egrep --color=auto'
+
 else
 	ColorOff=
 	UserNameColor=

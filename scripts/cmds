@@ -1,0 +1,5 @@
+#!/bin/sh
+
+CMD=$(dmenu -l 40 -i -fn "-misc-fixed-medium-*-*-*-14-*-*-*-*-*-*-*" < ~/.cmds)
+$SHELL -c "$CMD"
+

@@ -146,7 +146,7 @@ imap <C-S-Right> <Esc><C-S-Right>
 imap <C-S-Up> <Esc><C-S-Up>
 imap <C-S-Down> <Esc><C-S-Down>
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 set ttimeoutlen=10
 

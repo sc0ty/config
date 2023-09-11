@@ -1,0 +1,14 @@
+#requires:
+# 'xprintidle' for inactivity check (in ms)
+# 'rand' for generating random number (screen resolution)
+# 'xdotool' to move the mouse pointer
+
+sleep 2
+while :; do
+    if  [ $(xprintidle) -gt 240000 ]
+    then
+        xdotool mousemove `rand -M 1920` `rand -M 1080`;
+        echo "$?: $(date)"
+    fi
+    sleep 10
+done

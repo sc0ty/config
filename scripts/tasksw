@@ -1,0 +1,9 @@
+#!/bin/sh
+wmctrl -Fx -a "$1"
+
+if [ $? -ne 0 ]; then
+	shift
+	if [ -n "$*" ]; then
+		"$@"
+	fi
+fi

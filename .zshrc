@@ -274,7 +274,7 @@ else
 
 	alias xterm1="xtermcontrol --bg=#000000"
 	alias xterm2="xtermcontrol --bg=#002b36"
-	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(echo $history[$HISTCMD] |sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" || printf "\a"'
+	alias alert='notify-send -i "$([ $? = 0 ] && echo terminal || echo error)" "$(echo $history[$HISTCMD] |sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" || printf "\a"'
 fi
 
 function up() {

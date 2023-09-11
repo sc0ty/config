@@ -169,7 +169,7 @@ else
 
 	alias xterm1="xtermcontrol --bg=#000000"
 	alias xterm2="xtermcontrol --bg=#002b36"
-	alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" || printf "\a"'
+	alias alert='notify-send -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" || printf "\a"'
 fi
 
 function up() {
@@ -247,3 +247,4 @@ fi
 
 unset ColorOff UserNameColor HostNameColor PathColor JobsColor
 
+. "$HOME/.cargo/env"

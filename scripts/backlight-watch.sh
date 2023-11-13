@@ -7,6 +7,6 @@ if [ "$cur" = "10" ]; then
 else
 	notify-send --expire-time=3000 --transient --app-name=brightness --icon=/usr/share/icons/hicolor/48x48/status/display-brightness.png "Backlight: main screen only"
 	ddcutil --noverify --sn MY3ND94P0F5T --sleep-multiplier=.2 setvcp 10 10
-	ddcutil --noverify --sn 44580023 --sleep-multiplier=.2 setvcp 10 3
+	ddcutil --noverify --sn 44580023 --sleep-multiplier=.2 setvcp 10 6
 	ddcutil --noverify --sn J257M96B00FL --sleep-multiplier=.2 setvcp 10 0
 fi
